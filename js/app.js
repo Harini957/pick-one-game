@@ -1,680 +1,618 @@
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
-:root {
-    --background: #fffdf8;
-    --ink: #20201e;
-    --muted: #77766f;
-    --border: #e8e5dd;
-    --pink: #ffe1e9;
-    --yellow: #fff0b8;
-    --blue: #dceaff;
-    --green: #ddf4d7;
-    --purple: #e9dfff;
-    --orange: #ffe5cd;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background: var(--background);
-    color: var(--ink);
-    font-family: 'DM Sans', sans-serif;
-    line-height: 1.6;
-}
-
-button,
-textarea {
-    font: inherit;
-}
-
-button {
-    cursor: pointer;
-}
-
-button:focus-visible,
-a:focus-visible,
-textarea:focus-visible {
-    outline: 3px solid #8d79ff;
-    outline-offset: 4px;
-}
-
-.topbar {
-    min-height: 76px;
-    padding: 16px 7%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--border);
-    background: rgba(255, 253, 248, 0.95);
-}
-
-.brand {
-    color: var(--ink);
-    text-decoration: none;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 27px;
-    font-weight: 800;
-    letter-spacing: -1.5px;
-}
-
-.brand-mark {
-    display: inline-grid;
-    place-items: center;
-    width: 31px;
-    height: 31px;
-    margin-right: 5px;
-    border-radius: 9px;
-    background: #c7f36b;
-    font-size: 21px;
-}
-
-.brand-accent {
-    color: #8b6af7;
-}
-
-.status {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1px;
-}
-
-.status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #7fc95c;
-    box-shadow: 0 0 0 4px #e7f5dc;
-}
-
-.profile {
-    display: grid;
-    place-items: center;
-    width: 36px;
-    height: 36px;
-    margin-left: 10px;
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    background: white;
-    font-size: 18px;
-}
-
-.container {
-    width: min(1120px, 88%);
-    margin: 0 auto;
-}
-
-.hero {
-    position: relative;
-    padding: 95px 0 100px;
-}
-
-.eyebrow {
-    margin-bottom: 17px;
-    color: #77766f;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 2px;
-}
-
-.hero h1 {
-    max-width: 750px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(52px, 8vw, 94px);
-    line-height: 0.99;
-    letter-spacing: -6px;
-}
-
-.hero h1 span {
-    color: #8b6af7;
-}
-
-.hero-copy {
-    max-width: 450px;
-    margin: 25px 0 28px;
-    color: var(--muted);
-    font-size: 16px;
-}
-
-.primary-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 18px;
-    min-height: 49px;
-    padding: 12px 21px;
-    border: 2px solid var(--ink);
-    border-radius: 10px;
-    background: var(--ink);
-    color: white;
-    font-weight: 700;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.primary-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 4px 4px 0 #c7f36b;
-}
-
-.primary-button span {
-    font-size: 20px;
-}
-
-.sticker {
-    position: absolute;
-    top: 125px;
-    right: 7%;
-    display: grid;
-    place-content: center;
-    width: 135px;
-    height: 135px;
-    transform: rotate(10deg);
-    border: 2px solid var(--ink);
-    border-radius: 50%;
-    background: #c7f36b;
-    text-align: center;
-    font-size: 13px;
-    font-weight: 800;
-    line-height: 1.5;
-}
-
-.games-section {
-    padding: 30px 0 85px;
-    scroll-margin-top: 25px;
-}
-
-.section-heading {
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
-    gap: 20px;
-    margin-bottom: 27px;
-}
-
-.section-heading .eyebrow {
-    margin-bottom: 6px;
-}
-
-.section-heading h2 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(29px, 4vw, 42px);
-    line-height: 1.2;
-    letter-spacing: -1.8px;
-}
-
-.section-heading h2 span {
-    color: #8b6af7;
-}
-
-.count {
-    padding-bottom: 7px;
-    color: var(--muted);
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 1px;
-}
-
-.game-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
-}
-
-.game-card {
-    display: flex;
-    min-height: 225px;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 23px;
-    border: 2px solid var(--ink);
-    border-radius: 15px;
-    color: var(--ink);
-    text-align: left;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.game-card:hover {
-    transform: translateY(-5px) rotate(-0.5deg);
-    box-shadow: 5px 5px 0 var(--ink);
-}
-
-.pink {
-    background: var(--pink);
-}
-
-.yellow {
-    background: var(--yellow);
-}
-
-.blue {
-    background: var(--blue);
-}
-
-.green {
-    background: var(--green);
-}
-
-.purple {
-    background: var(--purple);
-}
-
-.orange {
-    background: var(--orange);
-}
-
-.card-top {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 23px;
-}
-
-.emoji {
-    display: grid;
-    place-items: center;
-    width: 48px;
-    height: 48px;
-    border: 1.5px solid rgba(32, 32, 30, 0.25);
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.5);
-    font-size: 26px;
-}
-
-.arrow {
-    font-size: 23px;
-    transition: transform 0.2s;
-}
-
-.game-card:hover .arrow {
-    transform: translate(3px, -3px);
-}
-
-.game-card strong {
-    margin-bottom: 5px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 19px;
-    line-height: 1.3;
-}
-
-.description {
-    color: #55544f;
-    font-size: 13px;
-}
-
-.game-card small {
-    margin-top: auto;
-    padding-top: 18px;
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 1.4px;
-}
-
-.hidden {
-    display: none !important;
-}
-
-.play-section {
-    max-width: 760px;
-    margin: 25px auto 80px;
-    scroll-margin-top: 25px;
-}
-
-.play-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.back-button {
-    padding: 8px 0;
-    border: 0;
-    background: transparent;
-    color: var(--muted);
-    font-weight: 700;
-}
-
-.back-button:hover {
-    color: var(--ink);
-}
-
-.play-label {
-    color: var(--muted);
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-}
-
-.play-panel {
-    padding: clamp(24px, 5vw, 48px);
-    border: 2px solid var(--ink);
-    border-radius: 20px;
-    background: white;
-    box-shadow: 7px 7px 0 var(--ink);
-    text-align: center;
-}
-
-.play-emoji {
-    margin-bottom: 10px;
-    font-size: 44px;
-}
-
-.play-panel h2 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(28px, 5vw, 43px);
-    line-height: 1.2;
-    letter-spacing: -1.5px;
-}
-
-.play-subtitle {
-    margin-top: 10px;
-    color: var(--muted);
-    font-size: 14px;
-}
-
-.game-controls {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin: 25px 0;
-}
-
-.control-button,
-.choice-button,
-.action-button {
-    padding: 11px 17px;
-    border: 1.5px solid var(--ink);
-    border-radius: 9px;
-    background: white;
-    color: var(--ink);
-    font-weight: 700;
-    transition: transform 0.15s, background 0.15s;
-}
-
-.control-button:hover,
-.choice-button:hover,
-.action-button:hover {
-    transform: translateY(-2px);
-    background: #f3f0ff;
-}
-
-.control-button.active,
-.choice-button.selected {
-    background: #e9dfff;
-    box-shadow: 2px 2px 0 var(--ink);
-}
-
-.prompt-card {
-    margin-top: 28px;
-    padding: 30px 22px;
-    border: 1.5px dashed #c7c1b5;
-    border-radius: 14px;
-    background: #fffdf8;
-}
-
-.prompt-card small {
-    color: #8b6af7;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 1.6px;
-}
-
-.prompt-card p {
-    margin-top: 12px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(21px, 4vw, 30px);
-    font-weight: 600;
-    line-height: 1.4;
-}
-
-.play-actions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 24px;
-}
-
-.action-button.primary {
-    background: var(--ink);
-    color: white;
-}
-
-.action-button.primary:hover {
-    background: #45423f;
-}
-
-.feedback {
-    min-height: 24px;
-    margin-top: 18px;
-    color: #6d55d9;
-    font-size: 13px;
-    font-weight: 700;
-}
-
-.custom-builder {
-    max-width: 760px;
-    margin: -35px auto 75px;
-    padding: 27px;
-    border: 2px solid var(--ink);
-    border-radius: 16px;
-    background: #f7f1ff;
-}
-
-.custom-builder h3 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 25px;
-}
-
-.custom-builder > p {
-    margin: 5px 0 22px;
-    color: var(--muted);
-    font-size: 14px;
-}
-
-.custom-builder label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 13px;
-    font-weight: 700;
-}
-
-.custom-builder textarea {
-    display: block;
-    width: 100%;
-    resize: vertical;
-    padding: 13px;
-    border: 1.5px solid #d7cbed;
-    border-radius: 10px;
-    background: white;
-    color: var(--ink);
-}
-
-.form-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-    margin-top: 12px;
-}
-
-.form-footer span {
-    color: var(--muted);
-    font-size: 12px;
-}
-
-.custom-list {
-    display: grid;
-    gap: 9px;
-    margin-top: 20px;
-}
-
-.custom-item {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 15px;
-    padding: 12px 14px;
-    border: 1px solid #e0d7f0;
-    border-radius: 9px;
-    background: white;
-    font-size: 14px;
-    overflow-wrap: anywhere;
-}
-
-.remove-question {
-    flex-shrink: 0;
-    border: 0;
-    background: transparent;
-    color: #b33d58;
-    font-weight: 800;
-}
-
-footer {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-    padding: 25px 0 30px;
-    border-top: 1px solid var(--border);
-    color: var(--muted);
-    font-size: 12px;
-}
-
-footer strong {
-    color: var(--ink);
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 17px;
-}
-
-footer small {
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 1px;
-}
-
-@media (max-width: 800px) {
-    .hero {
-        padding: 75px 0;
+"use strict";
+
+// ========================================
+// PICK ONE - PHASE 1: GAME LOGIC
+// ========================================
+
+const games = {
+    truth: {
+        title: "Truth or Dare",
+        emoji: "🎭",
+        subtitle: "Spill the tea or take the challenge.",
+        prompts: {
+            Truth: [
+                "What's the most embarrassing thing you've done in public?",
+                "Who was your first crush?",
+                "What's a secret talent nobody knows about?",
+                "What's the funniest lie you've ever told?",
+                "What's one thing you'd change about your past?",
+                "What's the weirdest dream you've ever had?",
+                "What's something you pretend to like but actually don't?",
+                "What's the most childish thing you still do?"
+            ],
+            Dare: [
+                "Do your best celebrity impression for 20 seconds.",
+                "Sing the chorus of your favourite song.",
+                "Talk in a funny accent for the next two rounds.",
+                "Dance without music for 15 seconds.",
+                "Make up a funny nickname for everyone playing.",
+                "Act like a news reporter announcing today's events.",
+                "Say the alphabet backwards as far as you can.",
+                "Give a dramatic movie-style speech about your favourite snack."
+            ]
+        }
+    },
+
+    thisorthat: {
+        title: "This or That",
+        emoji: "⚡",
+        subtitle: "Two choices. Pick your side!",
+        prompts: [
+            ["Beach 🏖️", "Mountains 🏔️"],
+            ["Pizza 🍕", "Burger 🍔"],
+            ["Texting 💬", "Calling 📞"],
+            ["Sunrise 🌅", "Sunset 🌇"],
+            ["Movies 🎬", "Web series 📺"],
+            ["Sweet 🍰", "Spicy 🌶️"],
+            ["Stay in 🏠", "Go out 🎉"],
+            ["Instagram 📸", "YouTube ▶️"],
+            ["Summer ☀️", "Winter ❄️"],
+            ["Cats 🐱", "Dogs 🐶"],
+            ["Past ⏳", "Future 🚀"],
+            ["Money 💰", "Free time 🕰️"],
+            ["K-pop 🎤", "Tamil songs 🎶"],
+            ["Plan everything 📝", "Be spontaneous 🎲"],
+            ["Invisible 👻", "Read minds 🧠"]
+        ]
+    },
+
+    wouldyourather: {
+        title: "Would You Rather",
+        emoji: "🤔",
+        subtitle: "Impossible choices. Defend your answer!",
+        prompts: [
+            "Would you rather be able to teleport anywhere or fly?",
+            "Would you rather know every language or play every instrument?",
+            "Would you rather relive your best day or skip your worst day?",
+            "Would you rather have unlimited food or unlimited travel?",
+            "Would you rather be famous for a talent or anonymous and rich?",
+            "Would you rather always be 10 minutes late or 20 minutes early?",
+            "Would you rather give up social media or streaming services?",
+            "Would you rather live near the beach or in the mountains?",
+            "Would you rather read minds or see the future?",
+            "Would you rather have a rewind button or a pause button for life?",
+            "Would you rather have your dream job or travel the world for a year?",
+            "Would you rather never use your phone for a week or never watch TV for a month?",
+            "Would you rather have a personal chef or a personal driver?",
+            "Would you rather be able to talk to animals or speak every human language?",
+            "Would you rather have an extra hour every day or an extra day every month?"
+        ]
+    },
+
+    never: {
+        title: "Never Have I Ever",
+        emoji: "🙈",
+        subtitle: "Raise a hand, share a story, and keep it friendly.",
+        prompts: [
+            "Never have I ever pretended to understand something when I didn't.",
+            "Never have I ever laughed at the wrong moment.",
+            "Never have I ever stalked someone's public profile.",
+            "Never have I ever sent a message to the wrong person.",
+            "Never have I ever forgotten someone's name immediately after meeting them.",
+            "Never have I ever practised a conversation in my head.",
+            "Never have I ever watched an entire series in one day.",
+            "Never have I ever blamed something on the internet connection.",
+            "Never have I ever taken more than 20 selfies for one photo.",
+            "Never have I ever stayed awake all night watching videos.",
+            "Never have I ever waved back at someone who wasn't waving at me.",
+            "Never have I ever made up an excuse to cancel plans.",
+            "Never have I ever forgotten why I walked into a room.",
+            "Never have I ever sung confidently while getting the lyrics wrong.",
+            "Never have I ever laughed so hard that I cried."
+        ]
+    },
+
+    quickfire: {
+        title: "Quick Fire",
+        emoji: "🔥",
+        subtitle: "Answer fast. No overthinking allowed!",
+        prompts: [
+            "One word to describe your best friend?",
+            "Your most-used emoji?",
+            "Your comfort food?",
+            "A song you can listen to on repeat?",
+            "Your dream travel destination?",
+            "One thing you cannot live without?",
+            "Your favourite fictional character?",
+            "Your biggest pet peeve?",
+            "An app you open every day?",
+            "Your favourite childhood memory?",
+            "One superpower you'd choose?",
+            "A movie you can quote from memory?",
+            "Your dream job in one word?",
+            "The funniest person in this group?",
+            "One thing that instantly improves your mood?",
+            "Your go-to excuse for being late?",
+            "A food combination you secretly love?",
+            "Your favourite time of day?"
+        ]
+    }
+};
+
+// ----------------------------------------
+// GET HTML ELEMENTS
+// ----------------------------------------
+
+const hero = document.getElementById("hero");
+const gamesSection = document.getElementById("games-section");
+const playSection = document.getElementById("play-section");
+const customBuilder = document.getElementById("custom-builder");
+
+const playLabel = document.getElementById("play-label");
+const playEmoji = document.getElementById("play-emoji");
+const playTitle = document.getElementById("play-title");
+const playSubtitle = document.getElementById("play-subtitle");
+const gameControls = document.getElementById("game-controls");
+
+const promptLabel = document.getElementById("prompt-label");
+const promptText = document.getElementById("prompt-text");
+const playActions = document.getElementById("play-actions");
+const feedback = document.getElementById("feedback");
+
+const customForm = document.getElementById("custom-form");
+const customQuestion = document.getElementById("custom-question");
+const customCount = document.getElementById("custom-count");
+const customList = document.getElementById("custom-list");
+
+// ----------------------------------------
+// GAME STATE
+// ----------------------------------------
+
+let currentGame = null;
+let currentTruthType = "Truth";
+let customQuestions = [];
+let currentPrompt = null;
+let usedPrompts = {};
+
+// ----------------------------------------
+// HELPER: PICK A RANDOM PROMPT
+// Avoid repeats until the list has been used.
+// ----------------------------------------
+
+function getRandomPrompt(list, category) {
+    if (!list || list.length === 0) {
+        return "Add some questions to get started!";
     }
 
-    .hero h1 {
-        letter-spacing: -3px;
+    if (!usedPrompts[category]) {
+        usedPrompts[category] = [];
     }
 
-    .sticker {
-        top: 90px;
-        right: 0;
-        width: 100px;
-        height: 100px;
-        font-size: 10px;
+    if (usedPrompts[category].length >= list.length) {
+        usedPrompts[category] = [];
     }
 
-    .game-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+    const availableIndexes = list
+        .map((_, index) => index)
+        .filter(index => !usedPrompts[category].includes(index));
 
-    .game-card {
-        min-height: 215px;
-        padding: 18px;
-    }
+    const randomIndex = availableIndexes[
+        Math.floor(Math.random() * availableIndexes.length)
+    ];
+
+    usedPrompts[category].push(randomIndex);
+
+    return list[randomIndex];
 }
 
-@media (max-width: 520px) {
-    .topbar {
-        padding: 14px 6%;
+// ----------------------------------------
+// HELPER: CREATE A BUTTON
+// ----------------------------------------
+
+function createButton(text, className, onClick) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = className;
+    button.textContent = text;
+    button.addEventListener("click", onClick);
+    return button;
+}
+
+// ----------------------------------------
+// OPEN A GAME
+// ----------------------------------------
+
+function openGame(gameKey) {
+    currentGame = gameKey;
+    currentPrompt = null;
+    feedback.textContent = "";
+    gameControls.replaceChildren();
+    playActions.replaceChildren();
+
+    hero.classList.add("hidden");
+    gamesSection.classList.add("hidden");
+    playSection.classList.remove("hidden");
+    customBuilder.classList.add("hidden");
+
+    if (gameKey === "custom") {
+        openCustomGame();
+        return;
     }
 
-    .brand {
-        font-size: 24px;
+    const game = games[gameKey];
+
+    if (!game) {
+        return;
     }
 
-    .status {
-        gap: 7px;
-        font-size: 9px;
+    playLabel.textContent = "NOW PLAYING";
+    playEmoji.textContent = game.emoji;
+    playTitle.textContent = game.title;
+    playSubtitle.textContent = game.subtitle;
+
+    if (gameKey === "truth") {
+        addTruthOrDareControls();
     }
 
-    .profile {
-        width: 30px;
-        height: 30px;
-        margin-left: 2px;
+    if (gameKey === "thisorthat") {
+        promptLabel.textContent = "MAKE YOUR PICK";
+        addNextButton("New choices");
+    } else if (gameKey !== "truth") {
+        promptLabel.textContent = "YOUR PROMPT";
+        addNextButton("Next question →");
     }
 
-    .container {
-        width: 88%;
+    promptText.textContent = "Ready? Let's play!";
+
+    if (gameKey === "truth") {
+        promptLabel.textContent = "CHOOSE YOUR CHALLENGE";
+        promptText.textContent = "Truth or Dare? You decide.";
+        showTruthOrDareActions();
+    } else if (gameKey === "thisorthat") {
+        showThisOrThatPrompt();
+    } else {
+        showNextPrompt();
     }
 
-    .hero {
-        padding: 65px 0 55px;
+    playSection.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+// ----------------------------------------
+// TRUTH OR DARE
+// ----------------------------------------
+
+function addTruthOrDareControls() {
+    const truthButton = createButton(
+        "💬 Truth",
+        "control-button active",
+        () => setTruthType("Truth")
+    );
+
+    const dareButton = createButton(
+        "🎯 Dare",
+        "control-button",
+        () => setTruthType("Dare")
+    );
+
+    truthButton.id = "truth-choice";
+    dareButton.id = "dare-choice";
+
+    gameControls.append(truthButton, dareButton);
+}
+
+function setTruthType(type) {
+    currentTruthType = type;
+
+    document.getElementById("truth-choice")
+        .classList.toggle("active", type === "Truth");
+
+    document.getElementById("dare-choice")
+        .classList.toggle("active", type === "Dare");
+
+    promptLabel.textContent = type.toUpperCase();
+    promptText.textContent = `Ready for your ${type.toLowerCase()}?`;
+    feedback.textContent = "";
+
+    showTruthOrDareActions();
+}
+
+function showTruthOrDareActions() {
+    playActions.replaceChildren();
+
+    const revealButton = createButton(
+        `Reveal ${currentTruthType} ✨`,
+        "action-button primary",
+        revealTruthOrDare
+    );
+
+    playActions.appendChild(revealButton);
+}
+
+function revealTruthOrDare() {
+    const prompts = games.truth.prompts[currentTruthType];
+
+    currentPrompt = getRandomPrompt(
+        prompts,
+        `truth-${currentTruthType}`
+    );
+
+    promptLabel.textContent = currentTruthType.toUpperCase();
+    promptText.textContent = currentPrompt;
+    feedback.textContent = "Your turn! Everyone else, pay attention 👀";
+
+    playActions.replaceChildren();
+
+    playActions.append(
+        createButton(
+            "🔄 Another one",
+            "action-button primary",
+            revealTruthOrDare
+        ),
+        createButton(
+            "Switch to " +
+                (currentTruthType === "Truth" ? "Dare" : "Truth"),
+            "action-button",
+            () => setTruthType(
+                currentTruthType === "Truth" ? "Dare" : "Truth"
+            )
+        )
+    );
+}
+
+// ----------------------------------------
+// THIS OR THAT
+// ----------------------------------------
+
+function showThisOrThatPrompt() {
+    const choices = getRandomPrompt(
+        games.thisorthat.prompts,
+        "thisorthat"
+    );
+
+    currentPrompt = choices;
+
+    promptLabel.textContent = "MAKE YOUR PICK";
+    promptText.textContent = `${choices[0]}  OR  ${choices[1]}`;
+    feedback.textContent = "Which side are you on?";
+
+    playActions.replaceChildren();
+
+    choices.forEach(choice => {
+        playActions.appendChild(
+            createButton(
+                choice,
+                "choice-button",
+                () => chooseThisOrThat(choice)
+            )
+        );
+    });
+
+    addNextButton("Next choices →");
+}
+
+function chooseThisOrThat(choice) {
+    playActions.querySelectorAll(".choice-button").forEach(button => {
+        button.classList.toggle(
+            "selected",
+            button.textContent === choice
+        );
+    });
+
+    feedback.textContent = `You picked ${choice}! Anyone disagree? 😄`;
+}
+
+// ----------------------------------------
+// OTHER GAME PROMPTS
+// ----------------------------------------
+
+function showNextPrompt() {
+    if (!currentGame || currentGame === "truth" ||
+        currentGame === "thisorthat" || currentGame === "custom") {
+        return;
     }
 
-    .hero h1 {
-        font-size: 55px;
-        letter-spacing: -3.5px;
+    const game = games[currentGame];
+
+    currentPrompt = getRandomPrompt(
+        game.prompts,
+        currentGame
+    );
+
+    promptLabel.textContent = "YOUR PROMPT";
+    promptText.textContent = currentPrompt;
+    feedback.textContent = "Pass the turn to another player when you're ready!";
+}
+
+// ----------------------------------------
+// NEXT BUTTON
+// ----------------------------------------
+
+function addNextButton(text) {
+    const nextButton = createButton(
+        text,
+        "action-button primary",
+        () => {
+            feedback.textContent = "";
+
+            if (currentGame === "thisorthat") {
+                showThisOrThatPrompt();
+            } else if (currentGame === "custom") {
+                showCustomPrompt();
+            } else {
+                showNextPrompt();
+            }
+        }
+    );
+
+    playActions.appendChild(nextButton);
+}
+
+// ----------------------------------------
+// CUSTOM QUESTIONS
+// ----------------------------------------
+
+function openCustomGame() {
+    playLabel.textContent = "YOUR GAME";
+    playEmoji.textContent = "📝";
+    playTitle.textContent = "Custom Questions";
+    playSubtitle.textContent =
+        "Create a question deck and play with your own rules.";
+
+    customBuilder.classList.remove("hidden");
+
+    promptLabel.textContent = "YOUR CUSTOM PROMPT";
+    promptText.textContent = customQuestions.length
+        ? "Ready to play your custom deck?"
+        : "Add your first question below!";
+
+    feedback.textContent = "";
+    playActions.replaceChildren();
+
+    addNextButton("Next custom question →");
+
+    renderCustomQuestions();
+
+    playSection.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function showCustomPrompt() {
+    if (customQuestions.length === 0) {
+        promptLabel.textContent = "YOUR CUSTOM PROMPT";
+        promptText.textContent = "Add a question to your deck first!";
+        feedback.textContent = "";
+        return;
     }
 
-    .hero-copy {
-        max-width: 290px;
-        font-size: 14px;
+    currentPrompt = getRandomPrompt(
+        customQuestions,
+        "custom"
+    );
+
+    promptLabel.textContent = "YOUR CUSTOM PROMPT";
+    promptText.textContent = currentPrompt;
+    feedback.textContent = "Your question, your rules! ✨";
+}
+
+function renderCustomQuestions() {
+    customList.replaceChildren();
+
+    customQuestions.forEach((question, index) => {
+        const item = document.createElement("div");
+        item.className = "custom-item";
+
+        const text = document.createElement("span");
+        text.textContent = `${index + 1}. ${question}`;
+
+        const removeButton = createButton(
+            "Remove",
+            "remove-question",
+            () => {
+                customQuestions.splice(index, 1);
+                usedPrompts.custom = [];
+                renderCustomQuestions();
+
+                if (customQuestions.length === 0) {
+                    promptText.textContent =
+                        "Add your first question below!";
+                }
+            }
+        );
+
+        item.append(text, removeButton);
+        customList.appendChild(item);
+    });
+
+    customCount.textContent = `${customQuestion.value.length} / 240`;
+}
+
+// Add a custom question to the deck.
+customForm.addEventListener("submit", event => {
+    event.preventDefault();
+
+    const question = customQuestion.value.trim();
+
+    if (!question) {
+        return;
     }
 
-    .sticker {
-        top: 28px;
-        right: 0;
-        width: 75px;
-        height: 75px;
-        font-size: 8px;
+    if (customQuestions.includes(question)) {
+        feedback.textContent = "That question is already in your deck!";
+        return;
     }
 
-    .section-heading {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 8px;
-    }
+    customQuestions.push(question);
+    usedPrompts.custom = [];
 
-    .game-grid {
-        grid-template-columns: 1fr;
-        gap: 13px;
-    }
+    customQuestion.value = "";
+    customCount.textContent = "0 / 240";
 
-    .game-card {
-        min-height: 190px;
-    }
+    renderCustomQuestions();
 
-    .play-panel {
-        padding: 24px 17px;
-        box-shadow: 4px 4px 0 var(--ink);
-    }
+    promptText.textContent =
+        `Added! You now have ${customQuestions.length} question(s).`;
 
-    .prompt-card {
-        padding: 24px 15px;
-    }
+    feedback.textContent = "Question added successfully! 🎉";
+});
 
-    .custom-builder {
-        padding: 20px 15px;
-    }
+// Update the character counter while typing.
+customQuestion.addEventListener("input", () => {
+    customCount.textContent =
+        `${customQuestion.value.length} / 240`;
+});
 
-    .form-footer {
-        align-items: flex-start;
-        flex-direction: column;
-    }
+// ----------------------------------------
+// NAVIGATION
+// ----------------------------------------
 
-    footer {
-        align-items: flex-start;
-        flex-direction: column;
-    }
+document.querySelectorAll("[data-game]").forEach(card => {
+    card.addEventListener("click", () => {
+        openGame(card.dataset.game);
+    });
+});
+
+document.getElementById("explore-button").addEventListener("click", () => {
+    gamesSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+});
+
+document.getElementById("back-button").addEventListener("click", () => {
+    playSection.classList.add("hidden");
+    customBuilder.classList.add("hidden");
+    hero.classList.remove("hidden");
+    gamesSection.classList.remove("hidden");
+
+    currentGame = null;
+
+    gamesSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+});
+
+document.getElementById("home-link").addEventListener("click", event => {
+    event.preventDefault();
+
+    playSection.classList.add("hidden");
+    customBuilder.classList.add("hidden");
+    hero.classList.remove("hidden");
+    gamesSection.classList.remove("hidden");
+
+    currentGame = null;
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
+// ----------------------------------------
+// STARTUP
+// ----------------------------------------
+
+console.log("Pick One loaded successfully! 🎮");
+
+
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js")
+            .then(() => {
+                console.log("Pick One offline support is ready!");
+            })
+            .catch(error => {
+                console.error("Service worker registration failed:", error);
+            });
+    });
 }
