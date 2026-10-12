@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pick One - your all-in-one party games app">
+    <title>Pick One | Party Games</title>
+
+   
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#c7f36b">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/app.js" defer></script>
+
+</head>
+
+<body>
+    <header class="topbar">
+        <a class="brand" href="#" id="home-link">
+            <span class="brand-mark">✦</span>
+            pick<span class="brand-accent">one</span>
+        </a>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            PARTY MODE
+            <span class="profile">🎉</span>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Homepage hero section -->
+        <section class="hero" id="hero">
+            <p class="eyebrow">✦ YOUR FRIEND GROUP'S NEW OBSESSION</p>
+
+            <h1>One app.<br>
+                <span>Endless chaos.</span>
+            </h1>
+
+            <p class="hero-copy">
+                Pick a game, gather your people, and let the
+                questionable decisions begin.
+            </p>
+
+            <button class="primary-button" id="explore-button">
+                Explore games <span>↘</span>
+            </button>
+
+            <div class="sticker">
+                NO BORING<br>PARTIES ✨
+            </div>
+        </section>
+
+        <!-- Six game cards -->
+        <section class="games-section" id="games-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">THE PLAYGROUND</p>
+                    <h2>Choose your <span>chaos.</span></h2>
+                </div>
+                <p class="count">06 GAMES TO PLAY</p>
+            </div>
+
+            <div class="game-grid">
+
+                <button class="game-card pink" data-game="truth">
+                    <span class="card-top">
+                        <span class="emoji">🎭</span>
+                        <span class="arrow">↗</span>
+                    </span>
+                    <strong>Truth or Dare</strong>
+                    <span class="description">
+                        Spill the tea or take the challenge.
+                    </span>
+                    <small>BOLD MOVES</small>
+                </button>
+
+                <button class="game-card yellow" data-game="thisorthat">
+                    <span class="card-top">
+                        <span class="emoji">⚡</span>
+                        <span class="arrow">↗</span>
+                    </span>
+                    <strong>This or That</strong>
+                    <span class="description">
+                        Two choices. No sitting on the fence.
+                    </span>
+                    <small>PICK A SIDE</small>
+                </button>
+
+                <button class="game-card blue" data-game="wouldyourather">
+                    <span class="card-top">
+                        <span class="emoji">🤔</span>
+                        <span class="arrow">↗</span>
+                    </span>
+                    <strong>Would You Rather</strong>
+                    <span class="description">
+                        Impossible choices, hilarious debates.
+                    </span>
+                    <small>TOUGH CALLS</small>
+                </button>
+
+                <button class="game-card green" data-game="never">
+                    <span class="card-top">
+                        <span class="emoji">🙈</span>
+                        <span class="arrow">↗</span>
+                    </span>
+                    <strong>Never Have I Ever</strong>
+                    <span class="description">
+                        Confessions might be incoming.
+                    </span>
+                    <small>CONFESSION TIME</small>
+                </button>
+
+                <button class="game-card purple" data-game="quickfire">
+                    <span class="card-top">
+                        <span class="emoji">🔥</span>
+                        <span class="arrow">↗</span>
+                    </span>
+                    <strong>Quick Fire</strong>
+                    <span class="description">
+                        Say the first thing that comes to mind.
+                    </span>
+                    <small>NO OVERTHINKING</small>
+                </button>
+
+                <button class="game-card orange" data-game="custom">
+                    <span class="card-top">
+                        <span class="emoji">📝</span>
+                        <span class="arrow">↗</span>
+                    </span>
+                    <strong>Custom Questions</strong>
+                    <span class="description">
+                        Make your own rules and questions.
+                    </span>
+                    <small>YOUR RULES</small>
+                </button>
+
+            </div>
+        </section>
+
+        <!-- Interactive game screen -->
+        <section class="play-section hidden" id="play-section"
+                 aria-live="polite">
+
+            <div class="play-header">
+                <button class="back-button" id="back-button">
+                    ← All games
+                </button>
+                <span class="play-label" id="play-label">
+                    GAME MODE
+                </span>
+            </div>
+
+            <div class="play-panel">
+                <div class="play-emoji" id="play-emoji">🎭</div>
+
+                <h2 id="play-title">Truth or Dare</h2>
+
+                <p class="play-subtitle" id="play-subtitle"></p>
+
+                <!-- Truth/Dare and other game controls -->
+                <div class="game-controls" id="game-controls"></div>
+
+                <!-- Question or challenge appears here -->
+                <div class="prompt-card">
+                    <small id="prompt-label">YOUR PROMPT</small>
+                    <p id="prompt-text">Ready when you are...</p>
+                </div>
+
+                <div class="play-actions" id="play-actions"></div>
+
+                <p class="feedback" id="feedback" role="status"></p>
+            </div>
+        </section>
+
+        <!-- Custom question creator -->
+        <section class="custom-builder hidden" id="custom-builder">
+            <h3>Your question deck</h3>
+
+            <p>
+                Add your own questions and challenges to your deck.
+            </p>
+
+            <form id="custom-form">
+                <label for="custom-question">
+                    Write a question or challenge
+                </label>
+
+                <textarea
+                    id="custom-question"
+                    rows="3"
+                    maxlength="240"
+                    placeholder="Example: What song can you never skip?"
+                    required
+                ></textarea>
+
+                <div class="form-footer">
+                    <span id="custom-count">0 / 240</span>
+                    <button class="primary-button" type="submit">
+                        Add question +
+                    </button>
+                </div>
+            </form>
+
+            <div id="custom-list" class="custom-list"></div>
+        </section>
+
+        <footer>
+            <strong>✦ pickone</strong>
+            <span>Made for laughs, not awkward silences.</span>
+            <small>PHASE 1 · LOCAL DEMO</small>
+        </footer>
+
+    </main>
+</body>
+</html>
