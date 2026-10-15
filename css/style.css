@@ -678,3 +678,304 @@ footer small {
         flex-direction: column;
     }
 }
+
+/* ===================================
+   PICK ONE - COLORFUL REDESIGN
+   =================================== */
+
+:root {
+    --background: #fffaf3;
+    --ink: #29213d;
+    --muted: #716b80;
+    --pink: #ff6b9a;
+    --yellow: #ffd75e;
+    --blue: #77b9ff;
+    --green: #83e0ad;
+    --purple: #c3a1ff;
+    --orange: #ffad76;
+    --accent: #7656f6;
+}
+
+/* Colorful page background */
+body {
+    background:
+        radial-gradient(ellipse at 5% 5%, #ffe1ee 0, transparent 32%),
+        radial-gradient(ellipse at 95% 20%, #e3dcff 0, transparent 30%),
+        var(--background);
+    color: var(--ink);
+}
+
+/* Brand */
+.brand {
+    color: #7656f6;
+    font-weight: 800;
+}
+
+.brand-mark {
+    color: #ff6095;
+}
+
+.brand-accent {
+    color: #ff6095;
+}
+
+.status {
+    background: #e4f8df;
+    color: #247847;
+    border: 1px solid #c6edbc;
+    border-radius: 999px;
+    padding: 8px 14px;
+}
+
+.status-dot {
+    background: #37b66a;
+}
+
+/* Hero heading */
+.hero h1 {
+    color: #29213d;
+    letter-spacing: -2px;
+}
+
+.hero h1 span,
+.section-heading h2 span {
+    background: linear-gradient(
+        100deg,
+        #ff5792,
+        #8959f7,
+        #398be8
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.eyebrow {
+    color: #8959e9;
+    font-weight: 800;
+}
+
+/* Main buttons */
+.primary-button {
+    background: linear-gradient(110deg, #ff6198, #9a65f8);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px #b58aff55;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.primary-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 26px #b58aff77;
+}
+
+/* Six colorful game cards */
+.game-card {
+    border: 2px solid transparent;
+    border-radius: 24px;
+    padding: 24px;
+    text-align: left;
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-6px) rotate(-1deg);
+    box-shadow: 0 14px 28px #34214a18;
+}
+
+.game-card.pink {
+    background: linear-gradient(145deg, #ffe1ec, #ffc9df);
+    border-color: #ffb1d0;
+    color: #702044;
+}
+
+.game-card.yellow {
+    background: linear-gradient(145deg, #fff3bd, #ffe18b);
+    border-color: #ffdb70;
+    color: #734400;
+}
+
+.game-card.blue {
+    background: linear-gradient(145deg, #e0efff, #c3ddff);
+    border-color: #b2d2ff;
+    color: #233b79;
+}
+
+.game-card.green {
+    background: linear-gradient(145deg, #e0f9e4, #c1f0ce);
+    border-color: #ace7bc;
+    color: #205d38;
+}
+
+.game-card.purple {
+    background: linear-gradient(145deg, #eee2ff, #dac6ff);
+    border-color: #d0b5ff;
+    color: #54318b;
+}
+
+.game-card.orange {
+    background: linear-gradient(145deg, #ffe5d4, #ffc9a6);
+    border-color: #ffbf98;
+    color: #7d3d1d;
+}
+
+/* Emoji illustrations */
+.game-card .emoji {
+    font-size: 2.6rem;
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+.game-card:hover .emoji {
+    transform: scale(1.15) rotate(7deg);
+}
+
+.game-card .arrow {
+    font-size: 1.3rem;
+}
+
+/* Game count */
+.count {
+    background: #eee7ff;
+    color: #6944c9;
+    border-radius: 999px;
+    padding: 9px 13px;
+    font-weight: 800;
+}
+
+/* Interactive game panel */
+.play-panel {
+    background: linear-gradient(145deg, #ffffff, #fff0f7);
+    border: 2px solid #f0dcff;
+    border-radius: 28px;
+    box-shadow: 0 18px 50px #7252a518;
+}
+
+.play-emoji {
+    background: linear-gradient(135deg, #ffe0ec, #e8ddff);
+    border-radius: 24px;
+    padding: 15px;
+    display: inline-block;
+}
+
+.prompt-card {
+    background: linear-gradient(135deg, #fff1c9, #ffe0ee);
+    border: 1px solid #ffd8a4;
+    border-radius: 22px;
+    padding: 24px;
+}
+
+.prompt-card small {
+    color: #9255c7;
+    font-weight: 800;
+}
+
+/* Choice and action buttons */
+.action-button,
+.control-button,
+.choice-button {
+    border-radius: 14px;
+    transition: transform 0.18s, background 0.18s;
+}
+
+.action-button.primary {
+    background: linear-gradient(110deg, #7656f6, #b45df3);
+    color: white;
+    border: none;
+}
+
+.control-button.active,
+.choice-button.selected {
+    background: #dff8dc;
+    border-color: #65c982;
+    color: #216c3c;
+}
+
+.choice-button {
+    background: #f0eaff;
+    border: 1px solid #d7c5ff;
+    color: #55349a;
+}
+
+.action-button:hover,
+.control-button:hover,
+.choice-button:hover {
+    transform: translateY(-2px);
+}
+
+/* Custom question builder */
+.custom-builder {
+    background: linear-gradient(145deg, #ffffff, #f1eaff);
+    border: 2px solid #dfd0ff;
+    border-radius: 24px;
+    padding: 24px;
+}
+
+#custom-question {
+    border: 2px solid #ded1ff;
+    border-radius: 14px;
+    background: white;
+}
+
+#custom-question:focus {
+    outline: 3px solid #d8c4ff;
+    border-color: #8e65ef;
+}
+
+.custom-item {
+    background: #fff0f6;
+    border: 1px solid #ffd0e2;
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.remove-question {
+    color: #c42e65;
+    background: #ffe0ec;
+    border: 1px solid #ffc0d7;
+    border-radius: 10px;
+}
+
+/* Footer */
+footer {
+    color: #716b80;
+}
+
+footer strong {
+    color: #8959e9;
+}
+
+/* Smaller screens */
+@media (max-width: 600px) {
+    .game-card {
+        padding: 18px;
+        border-radius: 19px;
+    }
+
+    .game-card .emoji {
+        font-size: 2.2rem;
+    }
+
+    .play-panel {
+        border-radius: 22px;
+    }
+
+    .prompt-card {
+        padding: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .game-card,
+    .game-card .emoji,
+    .primary-button,
+    .action-button,
+    .control-button,
+    .choice-button {
+        transition: none;
+    }
+}
+
