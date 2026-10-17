@@ -1,7 +1,8 @@
+
 "use strict";
 
 // ========================================
-// PICK ONE - PHASE 1: GAME LOGIC
+// PICK ONE - GAME LOGIC
 // ========================================
 
 const games = {
@@ -32,34 +33,6 @@ const games = {
             ]
         }
     },
-
-    
-const tamilPrompts = [
-    // TAMIL MOVIES — CLASSIC
-    { category: "movies", difficulty: "easy", era: "classic", answer: "Baasha", clue: "🕶️👑" },
-    { category: "movies", difficulty: "medium", era: "classic", answer: "Annamalai", clue: "🐄🏭👑" },
-    { category: "movies", difficulty: "hard", era: "classic", answer: "Mouna Ragam", clue: "🤫🎵💔" },
-    { category: "movies", difficulty: "medium", era: "classic", answer: "Thalapathi", clue: "🤝⚔️👑" },
-
-    // TAMIL MOVIES — MODERN
-    { category: "movies", difficulty: "easy", era: "modern", answer: "Jailer", clue: "👮🔒" },
-    { category: "movies", difficulty: "easy", era: "modern", answer: "Leo", clue: "🦁☕" },
-    { category: "movies", difficulty: "medium", era: "modern", answer: "Vikram", clue: "🕵️‍♂️🔫" },
-    { category: "movies", difficulty: "hard", era: "modern", answer: "96", clue: "🏫❤️⏳" },
-
-    // TAMIL SONGS — CLASSIC
-    { category: "songs", difficulty: "easy", era: "classic", answer: "Why This Kolaveri Di", clue: "❓😡👧" },
-    { category: "songs", difficulty: "medium", era: "classic", answer: "Anjali Anjali", clue: "👧👧🎶" },
-    { category: "songs", difficulty: "hard", era: "classic", answer: "Munbe Vaa", clue: "💖➡️🎶" },
-    { category: "songs", difficulty: "medium", era: "classic", answer: "Chinna Chinna Aasai", clue: "🤏✨💭" },
-
-    // TAMIL SONGS — MODERN
-    { category: "songs", difficulty: "easy", era: "modern", answer: "Arabic Kuthu", clue: "🕺🌍🎶" },
-    { category: "songs", difficulty: "easy", era: "modern", answer: "Vaathi Coming", clue: "👨‍🏫➡️🎉" },
-    { category: "songs", difficulty: "medium", era: "modern", answer: "Hukum", clue: "👑💥🎵" },
-    { category: "songs", difficulty: "hard", era: "modern", answer: "Megham Karukatha", clue: "☁️🌧️❤️" }
-];
-
 
     thisorthat: {
         title: "This or That",
@@ -154,24 +127,78 @@ const tamilPrompts = [
             "A food combination you secretly love?",
             "Your favourite time of day?"
         ]
-    
     },
+
     charades: {
         title: "Tamil Charades",
         emoji: "🎭",
-        subtitle: "Act out Tamil movies and songs. No speaking!"
+        subtitle: "Act out a Tamil movie or song without speaking!"
     },
+
     emojichallenge: {
         title: "Tamil Emoji Challenge",
         emoji: "🤯",
         subtitle: "Decode the emojis and guess the Tamil title!"
+    },
+
+    custom: {
+        title: "Custom Questions",
+        emoji: "📝",
+        subtitle: "Create a question deck and play by your own rules."
     }
 };
 
+// ========================================
+// TAMIL MOVIE AND SONG PROMPTS
+// difficulty: easy, medium, hard
+// era: classic or modern
+// ========================================
 
-// ----------------------------------------
+const tamilPrompts = [
+    // CLASSIC TAMIL MOVIES
+    { category: "movies", difficulty: "easy", era: "classic", answer: "Baasha", clue: "🕶️👑💥" },
+    { category: "movies", difficulty: "medium", era: "classic", answer: "Annamalai", clue: "🐄🏭👑" },
+    { category: "movies", difficulty: "hard", era: "classic", answer: "Mouna Ragam", clue: "🤫🎵💔" },
+    { category: "movies", difficulty: "medium", era: "classic", answer: "Thalapathi", clue: "🤝⚔️👑" },
+    { category: "movies", difficulty: "easy", era: "classic", answer: "Padayappa", clue: "🦁🔥👑" },
+    { category: "movies", difficulty: "medium", era: "classic", answer: "Nayakan", clue: "👨‍👧🌆⚖️" },
+    { category: "movies", difficulty: "easy", era: "classic", answer: "Jeans", clue: "👖👬💎" },
+    { category: "movies", difficulty: "hard", era: "classic", answer: "Alaipayuthey", clue: "🚆❤️🌊" },
+
+    // MODERN TAMIL MOVIES
+    { category: "movies", difficulty: "easy", era: "modern", answer: "Jailer", clue: "👮🔒🔥" },
+    { category: "movies", difficulty: "easy", era: "modern", answer: "Leo", clue: "🦁☕💥" },
+    { category: "movies", difficulty: "medium", era: "modern", answer: "Vikram", clue: "🕵️🔫🌃" },
+    { category: "movies", difficulty: "hard", era: "modern", answer: "96", clue: "🏫❤️⏳" },
+    { category: "movies", difficulty: "easy", era: "modern", answer: "Master", clue: "👨‍🏫🎓🥊" },
+    { category: "movies", difficulty: "medium", era: "modern", answer: "Soorarai Pottru", clue: "✈️👨‍✈️☁️" },
+    { category: "movies", difficulty: "medium", era: "modern", answer: "Doctor", clue: "🩺🤖🧒" },
+    { category: "movies", difficulty: "hard", era: "modern", answer: "Vinnaithaandi Varuvaayaa", clue: "🌌❤️🚶" },
+
+    // CLASSIC TAMIL SONGS
+    { category: "songs", difficulty: "easy", era: "classic", answer: "Chinna Chinna Aasai", clue: "🤏✨💭" },
+    { category: "songs", difficulty: "medium", era: "classic", answer: "Anjali Anjali", clue: "👧🎶❤️" },
+    { category: "songs", difficulty: "hard", era: "classic", answer: "Munbe Vaa", clue: "💖➡️🎶🌧️" },
+    { category: "songs", difficulty: "medium", era: "classic", answer: "Ennavale Adi Ennavale", clue: "❤️🎤👩" },
+    { category: "songs", difficulty: "easy", era: "classic", answer: "Mustafa Mustafa", clue: "👬🎓🎵" },
+    { category: "songs", difficulty: "hard", era: "classic", answer: "Poongatrile", clue: "🌸💨🎶" },
+    { category: "songs", difficulty: "medium", era: "classic", answer: "Urvasi Urvasi", clue: "💃🕺🎵" },
+    { category: "songs", difficulty: "easy", era: "classic", answer: "Why This Kolaveri Di", clue: "❓😡💔🎤" },
+
+    // MODERN TAMIL SONGS
+    { category: "songs", difficulty: "easy", era: "modern", answer: "Arabic Kuthu", clue: "🕺🌍🎶🔥" },
+    { category: "songs", difficulty: "easy", era: "modern", answer: "Vaathi Coming", clue: "👨‍🏫➡️🎉" },
+    { category: "songs", difficulty: "medium", era: "modern", answer: "Hukum", clue: "👑💥🎵" },
+    { category: "songs", difficulty: "hard", era: "modern", answer: "Megham Karukatha", clue: "☁️🌧️❤️" },
+    { category: "songs", difficulty: "easy", era: "modern", answer: "Enjoy Enjaami", clue: "🌿🌾🎶😊" },
+    { category: "songs", difficulty: "medium", era: "modern", answer: "Rowdy Baby", clue: "😎👶💃" },
+    { category: "songs", difficulty: "medium", era: "modern", answer: "Naa Ready", clue: "🙋🔥🎤" },
+    { category: "songs", difficulty: "hard", era: "modern", answer: "Katchi Sera", clue: "👀❤️🎶" }
+];
+
+// ========================================
 // GET HTML ELEMENTS
-// ----------------------------------------
+// ========================================
 
 const hero = document.getElementById("hero");
 const gamesSection = document.getElementById("games-section");
@@ -194,12 +221,11 @@ const customQuestion = document.getElementById("custom-question");
 const customCount = document.getElementById("custom-count");
 const customList = document.getElementById("custom-list");
 
-// ----------------------------------------
+// ========================================
 // GAME STATE
-// ----------------------------------------
+// ========================================
 
 let currentGame = null;
-
 let currentTamilCategory = "movies";
 let currentTamilDifficulty = "mixed";
 let currentTamilPrompt = null;
@@ -208,16 +234,16 @@ let tamilAnswerRevealed = false;
 let currentTruthType = "Truth";
 let customQuestions = [];
 let currentPrompt = null;
-let usedPrompts = {};
+const usedPrompts = {};
 
-// ----------------------------------------
-// HELPER: PICK A RANDOM PROMPT
-// Avoid repeats until the list has been used.
-// ----------------------------------------
+// ========================================
+// RANDOM PROMPT HELPER
+// Avoids repeats until the list is used.
+// ========================================
 
 function getRandomPrompt(list, category) {
     if (!list || list.length === 0) {
-        return "Add some questions to get started!";
+        return null;
     }
 
     if (!usedPrompts[category]) {
@@ -241,9 +267,9 @@ function getRandomPrompt(list, category) {
     return list[randomIndex];
 }
 
-// ----------------------------------------
-// HELPER: CREATE A BUTTON
-// ----------------------------------------
+// ========================================
+// BUTTON HELPER
+// ========================================
 
 function createButton(text, className, onClick) {
     const button = document.createElement("button");
@@ -254,19 +280,25 @@ function createButton(text, className, onClick) {
     return button;
 }
 
-// ----------------------------------------
-// OPEN A GAME
-// ----------------------------------------
+// ========================================
+// TAMIL GAME CONTROLS
+// ========================================
 
 function addTamilGameControls() {
     gameControls.replaceChildren();
 
-    const categories = [
-        { value: "movies", label: "🎬 Tamil Movies" },
-        { value: "songs", label: "🎵 Tamil Songs" }
-    ];
+    const categoryGroup = document.createElement("div");
+    categoryGroup.className = "control-group";
 
-    categories.forEach(category => {
+    const categoryLabel = document.createElement("span");
+    categoryLabel.className = "control-group-label";
+    categoryLabel.textContent = "Category";
+    categoryGroup.appendChild(categoryLabel);
+
+    [
+        { value: "movies", label: "🎬 Movies" },
+        { value: "songs", label: "🎵 Songs" }
+    ].forEach(category => {
         const button = createButton(
             category.label,
             "control-button" +
@@ -277,13 +309,17 @@ function addTamilGameControls() {
                 showTamilPrompt();
             }
         );
-        gameControls.appendChild(button);
+
+        categoryGroup.appendChild(button);
     });
 
-    const difficultyLabel = document.createElement("p");
-    difficultyLabel.textContent = "Difficulty:";
-    difficultyLabel.className = "tamil-difficulty-label";
-    gameControls.appendChild(difficultyLabel);
+    const difficultyGroup = document.createElement("div");
+    difficultyGroup.className = "control-group";
+
+    const difficultyLabel = document.createElement("span");
+    difficultyLabel.className = "control-group-label";
+    difficultyLabel.textContent = "Difficulty";
+    difficultyGroup.appendChild(difficultyLabel);
 
     ["mixed", "easy", "medium", "hard"].forEach(level => {
         const button = createButton(
@@ -296,9 +332,16 @@ function addTamilGameControls() {
                 showTamilPrompt();
             }
         );
-        gameControls.appendChild(button);
+
+        difficultyGroup.appendChild(button);
     });
+
+    gameControls.append(categoryGroup, difficultyGroup);
 }
+
+// ========================================
+// TAMIL CHARADES + EMOJI CHALLENGE
+// ========================================
 
 function showTamilPrompt() {
     const filteredPrompts = tamilPrompts.filter(prompt =>
@@ -316,16 +359,25 @@ function showTamilPrompt() {
 
     tamilAnswerRevealed = false;
     feedback.textContent = "";
-
     playActions.replaceChildren();
+
+    if (!currentTamilPrompt) {
+        promptLabel.textContent = "NO PROMPTS";
+        promptText.textContent = "No prompts are available for this selection.";
+        feedback.textContent = "Try another difficulty or category.";
+        return;
+    }
+
+    const categoryName = currentTamilCategory === "movies"
+        ? "Tamil movie"
+        : "Tamil song";
 
     if (currentGame === "charades") {
         promptLabel.textContent = "ACT IT OUT!";
-        promptText.textContent =
-            `Your prompt: ${currentTamilPrompt.answer}`;
+        promptText.textContent = currentTamilPrompt.answer;
 
         feedback.textContent =
-            "Act without saying the title. Let your friends guess! 🎭";
+            `Act out this ${categoryName} without speaking. 🎭`;
 
         playActions.appendChild(
             createButton(
@@ -339,7 +391,7 @@ function showTamilPrompt() {
         promptText.textContent = currentTamilPrompt.clue;
 
         feedback.textContent =
-            "What Tamil movie or song does this emoji clue represent?";
+            `Guess the ${categoryName} from the emojis!`;
 
         playActions.append(
             createButton(
@@ -363,10 +415,30 @@ function revealTamilAnswer() {
 
     tamilAnswerRevealed = true;
     promptText.textContent = currentTamilPrompt.answer;
+
+    const categoryName = currentTamilCategory === "movies"
+        ? "Tamil movie"
+        : "Tamil song";
+
+    const eraName = currentTamilPrompt.era === "classic"
+        ? "Classic"
+        : "Modern";
+
     feedback.textContent =
-        `Difficulty: ${currentTamilPrompt.difficulty} · ` +
-        `${currentTamilPrompt.era === "classic" ? "Classic" : "Modern"} Tamil ${currentTamilCategory === "movies" ? "movie" : "song"} 🎉`;
+        `${eraName} ${categoryName} · ` +
+        `${currentTamilPrompt.difficulty.toUpperCase()} difficulty 🎉`;
+
+    const revealButton = playActions.querySelector(".action-button.primary");
+
+    if (revealButton) {
+        revealButton.disabled = true;
+        revealButton.textContent = "Answer revealed ✓";
+    }
 }
+
+// ========================================
+// OPEN A GAME
+// ========================================
 
 function openGame(gameKey) {
     currentGame = gameKey;
@@ -380,11 +452,6 @@ function openGame(gameKey) {
     playSection.classList.remove("hidden");
     customBuilder.classList.add("hidden");
 
-    if (gameKey === "custom") {
-        openCustomGame();
-        return;
-    }
-
     const game = games[gameKey];
 
     if (!game) {
@@ -395,52 +462,50 @@ function openGame(gameKey) {
     playEmoji.textContent = game.emoji;
     playTitle.textContent = game.title;
     playSubtitle.textContent = game.subtitle;
-    
-if (gameKey === "charades" || gameKey === "emojichallenge") {
-    currentTamilCategory = "movies";
-    currentTamilDifficulty = "mixed";
 
-    addTamilGameControls();
-    showTamilPrompt();
+    if (gameKey === "custom") {
+        openCustomGame();
+        return;
+    }
+
+    if (gameKey === "charades" || gameKey === "emojichallenge") {
+        currentTamilCategory = "movies";
+        currentTamilDifficulty = "mixed";
+
+        addTamilGameControls();
+        showTamilPrompt();
+
+        playSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+        return;
+    }
+
+    if (gameKey === "truth") {
+        currentTruthType = "Truth";
+        addTruthOrDareControls();
+        promptLabel.textContent = "CHOOSE YOUR CHALLENGE";
+        promptText.textContent = "Truth or Dare? You decide.";
+        showTruthOrDareActions();
+    } else if (gameKey === "thisorthat") {
+        promptLabel.textContent = "MAKE YOUR PICK";
+        showThisOrThatPrompt();
+    } else {
+        promptLabel.textContent = "YOUR PROMPT";
+        addNextButton("Next question →");
+        showNextPrompt();
+    }
 
     playSection.scrollIntoView({
         behavior: "smooth",
         block: "start"
     });
-    return;
 }
 
-
-    if (gameKey === "truth") {
-        addTruthOrDareControls();
-    }
-
-    if (gameKey === "thisorthat") {
-        promptLabel.textContent = "MAKE YOUR PICK";
-        addNextButton("New choices");
-    } else if (gameKey !== "truth") {
-        promptLabel.textContent = "YOUR PROMPT";
-        addNextButton("Next question →");
-    }
-
-    promptText.textContent = "Ready? Let's play!";
-
-    if (gameKey === "truth") {
-        promptLabel.textContent = "CHOOSE YOUR CHALLENGE";
-        promptText.textContent = "Truth or Dare? You decide.";
-        showTruthOrDareActions();
-    } else if (gameKey === "thisorthat") {
-        showThisOrThatPrompt();
-    } else {
-        showNextPrompt();
-    }
-
-    playSection.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
-// ----------------------------------------
+// ========================================
 // TRUTH OR DARE
-// ----------------------------------------
+// ========================================
 
 function addTruthOrDareControls() {
     const truthButton = createButton(
@@ -480,13 +545,13 @@ function setTruthType(type) {
 function showTruthOrDareActions() {
     playActions.replaceChildren();
 
-    const revealButton = createButton(
-        `Reveal ${currentTruthType} ✨`,
-        "action-button primary",
-        revealTruthOrDare
+    playActions.appendChild(
+        createButton(
+            `Reveal ${currentTruthType} ✨`,
+            "action-button primary",
+            revealTruthOrDare
+        )
     );
-
-    playActions.appendChild(revealButton);
 }
 
 function revealTruthOrDare() {
@@ -520,9 +585,9 @@ function revealTruthOrDare() {
     );
 }
 
-// ----------------------------------------
+// ========================================
 // THIS OR THAT
-// ----------------------------------------
+// ========================================
 
 function showThisOrThatPrompt() {
     const choices = getRandomPrompt(
@@ -530,10 +595,14 @@ function showThisOrThatPrompt() {
         "thisorthat"
     );
 
+    if (!choices) {
+        return;
+    }
+
     currentPrompt = choices;
 
     promptLabel.textContent = "MAKE YOUR PICK";
-    promptText.textContent = `${choices[0]}  OR  ${choices[1]}`;
+    promptText.textContent = `${choices[0]} OR ${choices[1]}`;
     feedback.textContent = "Which side are you on?";
 
     playActions.replaceChildren();
@@ -562,31 +631,38 @@ function chooseThisOrThat(choice) {
     feedback.textContent = `You picked ${choice}! Anyone disagree? 😄`;
 }
 
-// ----------------------------------------
+// ========================================
 // OTHER GAME PROMPTS
-// ----------------------------------------
+// ========================================
 
 function showNextPrompt() {
-    if (!currentGame || currentGame === "truth" ||
-        currentGame === "thisorthat" || currentGame === "custom") {
+    if (
+        !currentGame ||
+        currentGame === "truth" ||
+        currentGame === "thisorthat" ||
+        currentGame === "custom" ||
+        currentGame === "charades" ||
+        currentGame === "emojichallenge"
+    ) {
         return;
     }
 
     const game = games[currentGame];
 
-    currentPrompt = getRandomPrompt(
-        game.prompts,
-        currentGame
-    );
+    if (!game || !game.prompts) {
+        return;
+    }
 
+    currentPrompt = getRandomPrompt(game.prompts, currentGame);
     promptLabel.textContent = "YOUR PROMPT";
     promptText.textContent = currentPrompt;
-    feedback.textContent = "Pass the turn to another player when you're ready!";
+    feedback.textContent =
+        "Pass the turn to another player when you're ready!";
 }
 
-// ----------------------------------------
+// ========================================
 // NEXT BUTTON
-// ----------------------------------------
+// ========================================
 
 function addNextButton(text) {
     const nextButton = createButton(
@@ -608,9 +684,9 @@ function addNextButton(text) {
     playActions.appendChild(nextButton);
 }
 
-// ----------------------------------------
+// ========================================
 // CUSTOM QUESTIONS
-// ----------------------------------------
+// ========================================
 
 function openCustomGame() {
     playLabel.textContent = "YOUR GAME";
@@ -630,10 +706,12 @@ function openCustomGame() {
     playActions.replaceChildren();
 
     addNextButton("Next custom question →");
-
     renderCustomQuestions();
 
-    playSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    playSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
 }
 
 function showCustomPrompt() {
@@ -644,10 +722,7 @@ function showCustomPrompt() {
         return;
     }
 
-    currentPrompt = getRandomPrompt(
-        customQuestions,
-        "custom"
-    );
+    currentPrompt = getRandomPrompt(customQuestions, "custom");
 
     promptLabel.textContent = "YOUR CUSTOM PROMPT";
     promptText.textContent = currentPrompt;
@@ -686,7 +761,6 @@ function renderCustomQuestions() {
     customCount.textContent = `${customQuestion.value.length} / 240`;
 }
 
-// Add a custom question to the deck.
 customForm.addEventListener("submit", event => {
     event.preventDefault();
 
@@ -715,15 +789,14 @@ customForm.addEventListener("submit", event => {
     feedback.textContent = "Question added successfully! 🎉";
 });
 
-// Update the character counter while typing.
 customQuestion.addEventListener("input", () => {
     customCount.textContent =
         `${customQuestion.value.length} / 240`;
 });
 
-// ----------------------------------------
+// ========================================
 // NAVIGATION
-// ----------------------------------------
+// ========================================
 
 document.querySelectorAll("[data-game]").forEach(card => {
     card.addEventListener("click", () => {
@@ -768,12 +841,11 @@ document.getElementById("home-link").addEventListener("click", event => {
     });
 });
 
-// ----------------------------------------
-// STARTUP
-// ----------------------------------------
+// ========================================
+// STARTUP + OFFLINE SUPPORT
+// ========================================
 
 console.log("Pick One loaded successfully! 🎮");
-
 
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
@@ -782,7 +854,10 @@ if ("serviceWorker" in navigator) {
                 console.log("Pick One offline support is ready!");
             })
             .catch(error => {
-                console.error("Service worker registration failed:", error);
+                console.error(
+                    "Service worker registration failed:",
+                    error
+                );
             });
     });
 }
