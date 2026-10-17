@@ -979,3 +979,44 @@ footer strong {
     }
 }
 
+/* Dark background theme */
+body {
+    background: #12121A;
+    color: #F5F5FF;
+}
+
+/* Header */
+.topbar {
+    background: #191923;
+}
+
+/* Main headings */
+.hero h1,
+.section-heading {
+    color: #FFFFFF;
+}
+
+/* Descriptive text */
+.description,
+.hero p,
+.play-subtitle {
+    color: #B8B8CC;
+}
+
+/* Game cards */
+.game-card {
+    border: 1px solid #343447;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Game play area */
+.play-panel {
+    background: #1D1D2A;
+    color: #FFFFFF;
+}
+
+/* Footer */
+footer {
+    color: #A6A6BB;
+}
+
