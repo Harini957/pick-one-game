@@ -33,6 +33,34 @@ const games = {
         }
     },
 
+    
+const tamilPrompts = [
+    // TAMIL MOVIES — CLASSIC
+    { category: "movies", difficulty: "easy", era: "classic", answer: "Baasha", clue: "🕶️👑" },
+    { category: "movies", difficulty: "medium", era: "classic", answer: "Annamalai", clue: "🐄🏭👑" },
+    { category: "movies", difficulty: "hard", era: "classic", answer: "Mouna Ragam", clue: "🤫🎵💔" },
+    { category: "movies", difficulty: "medium", era: "classic", answer: "Thalapathi", clue: "🤝⚔️👑" },
+
+    // TAMIL MOVIES — MODERN
+    { category: "movies", difficulty: "easy", era: "modern", answer: "Jailer", clue: "👮🔒" },
+    { category: "movies", difficulty: "easy", era: "modern", answer: "Leo", clue: "🦁☕" },
+    { category: "movies", difficulty: "medium", era: "modern", answer: "Vikram", clue: "🕵️‍♂️🔫" },
+    { category: "movies", difficulty: "hard", era: "modern", answer: "96", clue: "🏫❤️⏳" },
+
+    // TAMIL SONGS — CLASSIC
+    { category: "songs", difficulty: "easy", era: "classic", answer: "Why This Kolaveri Di", clue: "❓😡👧" },
+    { category: "songs", difficulty: "medium", era: "classic", answer: "Anjali Anjali", clue: "👧👧🎶" },
+    { category: "songs", difficulty: "hard", era: "classic", answer: "Munbe Vaa", clue: "💖➡️🎶" },
+    { category: "songs", difficulty: "medium", era: "classic", answer: "Chinna Chinna Aasai", clue: "🤏✨💭" },
+
+    // TAMIL SONGS — MODERN
+    { category: "songs", difficulty: "easy", era: "modern", answer: "Arabic Kuthu", clue: "🕺🌍🎶" },
+    { category: "songs", difficulty: "easy", era: "modern", answer: "Vaathi Coming", clue: "👨‍🏫➡️🎉" },
+    { category: "songs", difficulty: "medium", era: "modern", answer: "Hukum", clue: "👑💥🎵" },
+    { category: "songs", difficulty: "hard", era: "modern", answer: "Megham Karukatha", clue: "☁️🌧️❤️" }
+];
+
+
     thisorthat: {
         title: "This or That",
         emoji: "⚡",
@@ -126,8 +154,20 @@ const games = {
             "A food combination you secretly love?",
             "Your favourite time of day?"
         ]
+    
+    },
+    charades: {
+        title: "Tamil Charades",
+        emoji: "🎭",
+        subtitle: "Act out Tamil movies and songs. No speaking!"
+    },
+    emojichallenge: {
+        title: "Tamil Emoji Challenge",
+        emoji: "🤯",
+        subtitle: "Decode the emojis and guess the Tamil title!"
     }
 };
+
 
 // ----------------------------------------
 // GET HTML ELEMENTS
@@ -159,6 +199,12 @@ const customList = document.getElementById("custom-list");
 // ----------------------------------------
 
 let currentGame = null;
+
+let currentTamilCategory = "movies";
+let currentTamilDifficulty = "mixed";
+let currentTamilPrompt = null;
+let tamilAnswerRevealed = false;
+
 let currentTruthType = "Truth";
 let customQuestions = [];
 let currentPrompt = null;
@@ -212,6 +258,116 @@ function createButton(text, className, onClick) {
 // OPEN A GAME
 // ----------------------------------------
 
+function addTamilGameControls() {
+    gameControls.replaceChildren();
+
+    const categories = [
+        { value: "movies", label: "🎬 Tamil Movies" },
+        { value: "songs", label: "🎵 Tamil Songs" }
+    ];
+
+    categories.forEach(category => {
+        const button = createButton(
+            category.label,
+            "control-button" +
+                (currentTamilCategory === category.value ? " active" : ""),
+            () => {
+                currentTamilCategory = category.value;
+                addTamilGameControls();
+                showTamilPrompt();
+            }
+        );
+        gameControls.appendChild(button);
+    });
+
+    const difficultyLabel = document.createElement("p");
+    difficultyLabel.textContent = "Difficulty:";
+    difficultyLabel.className = "tamil-difficulty-label";
+    gameControls.appendChild(difficultyLabel);
+
+    ["mixed", "easy", "medium", "hard"].forEach(level => {
+        const button = createButton(
+            level.charAt(0).toUpperCase() + level.slice(1),
+            "control-button" +
+                (currentTamilDifficulty === level ? " active" : ""),
+            () => {
+                currentTamilDifficulty = level;
+                addTamilGameControls();
+                showTamilPrompt();
+            }
+        );
+        gameControls.appendChild(button);
+    });
+}
+
+function showTamilPrompt() {
+    const filteredPrompts = tamilPrompts.filter(prompt =>
+        prompt.category === currentTamilCategory &&
+        (
+            currentTamilDifficulty === "mixed" ||
+            prompt.difficulty === currentTamilDifficulty
+        )
+    );
+
+    currentTamilPrompt = getRandomPrompt(
+        filteredPrompts,
+        `${currentGame}-${currentTamilCategory}-${currentTamilDifficulty}`
+    );
+
+    tamilAnswerRevealed = false;
+    feedback.textContent = "";
+
+    playActions.replaceChildren();
+
+    if (currentGame === "charades") {
+        promptLabel.textContent = "ACT IT OUT!";
+        promptText.textContent =
+            `Your prompt: ${currentTamilPrompt.answer}`;
+
+        feedback.textContent =
+            "Act without saying the title. Let your friends guess! 🎭";
+
+        playActions.appendChild(
+            createButton(
+                "🔄 Next prompt",
+                "action-button primary",
+                showTamilPrompt
+            )
+        );
+    } else {
+        promptLabel.textContent = "GUESS THE TITLE";
+        promptText.textContent = currentTamilPrompt.clue;
+
+        feedback.textContent =
+            "What Tamil movie or song does this emoji clue represent?";
+
+        playActions.append(
+            createButton(
+                "👀 Reveal answer",
+                "action-button primary",
+                revealTamilAnswer
+            ),
+            createButton(
+                "🔄 Next clue",
+                "action-button",
+                showTamilPrompt
+            )
+        );
+    }
+}
+
+function revealTamilAnswer() {
+    if (!currentTamilPrompt || tamilAnswerRevealed) {
+        return;
+    }
+
+    tamilAnswerRevealed = true;
+    promptText.textContent = currentTamilPrompt.answer;
+    feedback.textContent =
+        `Difficulty: ${currentTamilPrompt.difficulty} · ` +
+        `${currentTamilPrompt.era === "classic" ? "Classic" : "Modern"} Tamil ${currentTamilCategory === "movies" ? "movie" : "song"} 🎉`;
+}
+
 function openGame(gameKey) {
     currentGame = gameKey;
     currentPrompt = null;
@@ -239,6 +395,21 @@ function openGame(gameKey) {
     playEmoji.textContent = game.emoji;
     playTitle.textContent = game.title;
     playSubtitle.textContent = game.subtitle;
+    
+if (gameKey === "charades" || gameKey === "emojichallenge") {
+    currentTamilCategory = "movies";
+    currentTamilDifficulty = "mixed";
+
+    addTamilGameControls();
+    showTamilPrompt();
+
+    playSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+    return;
+}
+
 
     if (gameKey === "truth") {
         addTruthOrDareControls();
