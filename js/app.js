@@ -153,6 +153,12 @@ const games = {
         ]
     },
 
+    letterriddle: {
+        title: "Letter Riddles",
+        emoji: "🔐",
+        subtitle: "Answer a question by unscrambling its hidden letters."
+    },
+
     titlescramble: {
         title: "Tamil Title Scramble",
         emoji: "🔤",
@@ -272,6 +278,41 @@ const tamilPrompts = [
     { category: "songs", difficulty: "medium", era: "modern", answer: "Porkanda Singam", clue: "⚔️🦁🔥" }
 ];
 
+const letterRiddleDecks = {
+    general: [
+        { question: "Which planet is known as the Red Planet?", answer: "Mars" },
+        { question: "What is the largest planet in our solar system?", answer: "Jupiter" },
+        { question: "What is the fastest land animal?", answer: "Cheetah" },
+        { question: "Which ocean is the largest on Earth?", answer: "Pacific" },
+        { question: "What instrument has black and white keys?", answer: "Piano" },
+        { question: "What sweet food do bees make?", answer: "Honey" }
+    ],
+    tamilMovies: [
+        { question: "Which film features Senapathy, the former freedom fighter?", answer: "Indian" },
+        { question: "In which film does teacher JD face Bhavani?", answer: "Master" },
+        { question: "Which film follows retired jailer Muthuvel Pandian?", answer: "Jailer" },
+        { question: "Which romance reunites Ram and Jaanu after many years?", answer: "96" },
+        { question: "Which film has Velu helping Dhanalakshmi escape?", answer: "Ghilli" },
+        { question: "Which Rajinikanth film is named after a pearl?", answer: "Muthu" }
+    ],
+    tamilSongs: [
+        { question: "Complete this viral Tamil song title: ‘Why This ____ Di?’", answer: "Kolaveri" },
+        { question: "What is the title of the Beast song known as the Arabic dance number?", answer: "Arabic Kuthu" },
+        { question: "Which Master song became a famous teacher-entry anthem?", answer: "Vaathi Coming" },
+        { question: "Which Dhanush song title asks if you are ready?", answer: "Naa Ready" },
+        { question: "Which song title means ‘small, small desires’?", answer: "Chinna Chinna Aasai" },
+        { question: "Which song from Maari features Dhanush and Sai Pallavi?", answer: "Rowdy Baby" }
+    ],
+    kpop: [
+        { question: "Which group released the song ‘Dynamite’?", answer: "BTS" },
+        { question: "Which group released ‘Ddu-Du Ddu-Du’?", answer: "BLACKPINK" },
+        { question: "Which BLACKPINK member released the solo single ‘SOLO’?", answer: "Jennie" },
+        { question: "Which group includes Nayeon, Jeongyeon, and Momo?", answer: "TWICE" },
+        { question: "What is the name of BTS’s fandom?", answer: "ARMY" },
+        { question: "Which group released the song ‘Cupid’ in 2023?", answer: "Fifty Fifty" }
+    ]
+};
+
 // ========================================
 // GET HTML ELEMENTS
 // ========================================
@@ -312,6 +353,7 @@ let currentTruthType = "Truth";
 let customQuestions = [];
 let currentPrompt = null;
 const usedPrompts = {};
+let currentLetterRiddleCategory = "general";
 
 // ========================================
 // RANDOM PROMPT HELPER
@@ -355,6 +397,67 @@ function createButton(text, className, onClick) {
     button.textContent = text;
     button.addEventListener("click", onClick);
     return button;
+}
+
+function addLetterRiddleControls() {
+    gameControls.replaceChildren();
+    const group = document.createElement("div");
+    group.className = "control-group";
+
+    const label = document.createElement("span");
+    label.className = "control-group-label";
+    label.textContent = "Choose a topic";
+    group.appendChild(label);
+
+    [
+        { key: "general", text: "🌍 General" },
+        { key: "tamilMovies", text: "🎬 Tamil Movies" },
+        { key: "tamilSongs", text: "🎵 Tamil Songs" },
+        { key: "kpop", text: "💜 K-pop" }
+    ].forEach(topic => {
+        group.appendChild(createButton(
+            topic.text,
+            `control-button${currentLetterRiddleCategory === topic.key ? " active" : ""}`,
+            () => {
+                currentLetterRiddleCategory = topic.key;
+                addLetterRiddleControls();
+                showLetterRiddle();
+            }
+        ));
+    });
+
+    gameControls.appendChild(group);
+}
+
+function scrambleRiddleLetters(answer) {
+    const letters = normalizeAnswer(answer).split("");
+    for (let i = letters.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [letters[i], letters[j]] = [letters[j], letters[i]];
+    }
+    if (letters.join("") === normalizeAnswer(answer) && letters.length > 1) {
+        letters.push(letters.shift());
+    }
+    return letters.join(" · ");
+}
+
+function showLetterRiddle() {
+    currentPrompt = getRandomPrompt(
+        letterRiddleDecks[currentLetterRiddleCategory],
+        `letterriddle-${currentLetterRiddleCategory}`
+    );
+    if (!currentPrompt) return;
+
+    promptLabel.textContent = "SOLVE THE LETTER RIDDLE";
+    promptText.textContent = `${currentPrompt.question}\n\n🔤 ${scrambleRiddleLetters(currentPrompt.answer)}`;
+    answerForm.classList.remove("hidden");
+    answerForm.querySelector("label").textContent = "Unscramble the answer";
+    answerInput.placeholder = "Type the answer…";
+    answerInput.value = "";
+    feedback.textContent = "Every letter you need is here. Put them in the right order!";
+    playActions.replaceChildren(
+        createButton("🔀 Next riddle", "action-button", showLetterRiddle)
+    );
 }
 
 // ========================================
@@ -503,6 +606,7 @@ function openGame(gameKey) {
     playActions.className = "play-actions";
     answerForm.classList.add("hidden");
     answerInput.value = "";
+    answerForm.querySelector("label").textContent = "Your answer";
 
     hero.classList.add("hidden");
     gamesSection.classList.add("hidden");
@@ -536,6 +640,14 @@ function openGame(gameKey) {
             behavior: "smooth",
             block: "start"
         });
+        return;
+    }
+
+    if (gameKey === "letterriddle") {
+        currentLetterRiddleCategory = "general";
+        addLetterRiddleControls();
+        showLetterRiddle();
+        playSection.scrollIntoView({ behavior: "smooth", block: "start" });
         return;
     }
 
@@ -710,12 +822,12 @@ function checkAnswer(event) {
         return;
     }
 
-    const expected = ["dialogue", "titlescramble"].includes(currentGame)
+    const expected = ["dialogue", "titlescramble", "letterriddle"].includes(currentGame)
         ? currentPrompt?.answer
         : currentTamilPrompt?.answer;
     if (!expected) return;
 
-    const aliases = ["dialogue", "titlescramble"].includes(currentGame)
+    const aliases = ["dialogue", "titlescramble", "letterriddle"].includes(currentGame)
         ? []
         : (currentTamilPrompt?.aliases || []);
     const acceptedAnswers = [expected, ...aliases];
