@@ -135,24 +135,6 @@ const games = {
         subtitle: "Act out a Tamil movie or song without speaking!"
     },
 
-    emojichallenge: {
-        title: "Tamil Emoji Challenge",
-        emoji: "🤯",
-        subtitle: "Decode title words, initials, and clear movie or song clues."
-    },
-
-    songquiz: {
-        title: "Tamil Song ID",
-        emoji: "🎧",
-        subtitle: "Hum a tune, decode a clue, and name that Tamil hit!"
-    },
-
-    titlechain: {
-        title: "Tamil Title Chain",
-        emoji: "🔗",
-        subtitle: "Enter a Tamil movie or song that starts with the required letter."
-    },
-
     dialogue: {
         title: "Kollywood Quickfire",
         emoji: "🎙️",
@@ -290,25 +272,6 @@ const tamilPrompts = [
     { category: "songs", difficulty: "medium", era: "modern", answer: "Porkanda Singam", clue: "⚔️🦁🔥" }
 ];
 
-// Fifteen clear, title-linked emoji rebuses for the timed multiple-choice round.
-const emojiQuizDeck = [
-    { emoji: "🔫🎯", answer: "Thuppakki", options: ["Thuppakki", "Jailer", "Kaithi", "Vikram"] },
-    { emoji: "🏏🔤🎓💘", answer: "Sachein", options: ["Sachein", "Ghilli", "Master", "Love Today"] },
-    { emoji: "👖👖✨", answer: "Jeans", options: ["Jeans", "Don", "Doctor", "Indian"] },
-    { emoji: "🩺🧑‍⚕️", answer: "Doctor", options: ["Doctor", "Jailer", "Master", "Indian"] },
-    { emoji: "🔒👮‍♂️🗝️", answer: "Jailer", options: ["Jailer", "Kaithi", "Vikram", "Thuppakki"] },
-    { emoji: "♌🦁☕", answer: "Leo", options: ["Leo", "Jailer", "Master", "Vikram"] },
-    { emoji: "9️⃣6️⃣🏫💌", answer: "96", options: ["96", "Jeans", "Love Today", "Vinnaithaandi Varuvaayaa"] },
-    { emoji: "🧑‍🏫🥊🏆", answer: "Master", options: ["Master", "Doctor", "Don", "Sachein"] },
-    { emoji: "🇮🇳👴✊", answer: "Indian", options: ["Indian", "Muthu", "Nayakan", "Baasha"] },
-    { emoji: "❤️📅📱", answer: "Love Today", options: ["Love Today", "96", "Sachein", "Jeans"] },
-    { emoji: "🚗🅿️😤", answer: "Parking", options: ["Parking", "Jailer", "Kaithi", "Don"] },
-    { emoji: "🤏🤏✨💭", answer: "Chinna Chinna Aasai", options: ["Chinna Chinna Aasai", "Rowdy Baby", "Vaathi Coming", "Arabic Kuthu"] },
-    { emoji: "👨‍🏫➡️🥁", answer: "Vaathi Coming", options: ["Vaathi Coming", "Vaathi Raid", "Hukum", "Naa Ready"] },
-    { emoji: "🕌💃🥁", answer: "Arabic Kuthu", options: ["Arabic Kuthu", "Rowdy Baby", "Jimikki Ponnu", "Katchi Sera"] },
-    { emoji: "😎👶💃", answer: "Rowdy Baby", options: ["Rowdy Baby", "Ranjithame", "Arabic Kuthu", "Private Party"] }
-];
-
 // ========================================
 // GET HTML ELEMENTS
 // ========================================
@@ -317,7 +280,6 @@ const hero = document.getElementById("hero");
 const gamesSection = document.getElementById("games-section");
 const playSection = document.getElementById("play-section");
 const customBuilder = document.getElementById("custom-builder");
-const playPanel = document.querySelector(".play-panel");
 
 const playLabel = document.getElementById("play-label");
 const playEmoji = document.getElementById("play-emoji");
@@ -331,10 +293,6 @@ const playActions = document.getElementById("play-actions");
 const feedback = document.getElementById("feedback");
 const answerForm = document.getElementById("answer-form");
 const answerInput = document.getElementById("answer-input");
-const quizHud = document.getElementById("quiz-hud");
-const quizTime = document.getElementById("quiz-time");
-const quizProgress = document.getElementById("quiz-progress");
-const quizScore = document.getElementById("quiz-score");
 
 const customForm = document.getElementById("custom-form");
 const customQuestion = document.getElementById("custom-question");
@@ -354,15 +312,6 @@ let currentTruthType = "Truth";
 let customQuestions = [];
 let currentPrompt = null;
 const usedPrompts = {};
-let titleChainLetter = "";
-let usedChainTitles = new Set();
-let emojiQuizQuestions = [];
-let emojiQuizIndex = 0;
-let emojiQuizScore = 0;
-let emojiQuizSeconds = 10;
-let emojiQuizInterval = null;
-let emojiQuizAdvanceTimeout = null;
-let emojiQuizLocked = false;
 
 // ========================================
 // RANDOM PROMPT HELPER
@@ -408,105 +357,6 @@ function createButton(text, className, onClick) {
     return button;
 }
 
-function clearEmojiQuizTimers() {
-    window.clearInterval(emojiQuizInterval);
-    window.clearTimeout(emojiQuizAdvanceTimeout);
-    emojiQuizInterval = null;
-    emojiQuizAdvanceTimeout = null;
-}
-
-function startEmojiQuiz() {
-    clearEmojiQuizTimers();
-    emojiQuizQuestions = [...emojiQuizDeck];
-    for (let i = emojiQuizQuestions.length - 1; i > 0; i -= 1) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [emojiQuizQuestions[i], emojiQuizQuestions[j]] =
-            [emojiQuizQuestions[j], emojiQuizQuestions[i]];
-    }
-    emojiQuizIndex = 0;
-    emojiQuizScore = 0;
-    quizScore.textContent = "0";
-    quizHud.classList.remove("hidden");
-    playPanel.classList.add("quiz-active");
-    gameControls.replaceChildren();
-    answerForm.classList.add("hidden");
-    showEmojiQuizQuestion();
-}
-
-function showEmojiQuizQuestion() {
-    clearEmojiQuizTimers();
-    if (emojiQuizIndex >= emojiQuizQuestions.length) {
-        finishEmojiQuiz();
-        return;
-    }
-
-    emojiQuizLocked = false;
-    const question = emojiQuizQuestions[emojiQuizIndex];
-    promptLabel.textContent = "EMOJI PUZZLE";
-    promptText.textContent = question.emoji;
-    quizProgress.textContent = `${emojiQuizIndex + 1} of ${emojiQuizQuestions.length}`;
-    emojiQuizSeconds = 10;
-    quizTime.textContent = String(emojiQuizSeconds);
-    feedback.textContent = "Choose the Tamil movie or song that matches the title rebus.";
-    playActions.replaceChildren();
-    playActions.className = "play-actions quiz-options";
-
-    const shuffledOptions = [...question.options].sort(() => Math.random() - 0.5);
-    shuffledOptions.forEach(option => {
-        playActions.appendChild(createButton(option, "quiz-option", event => {
-            resolveEmojiAnswer(option, event.currentTarget);
-        }));
-    });
-
-    emojiQuizInterval = window.setInterval(() => {
-        emojiQuizSeconds -= 1;
-        quizTime.textContent = String(Math.max(0, emojiQuizSeconds));
-        if (emojiQuizSeconds <= 0) resolveEmojiAnswer(null, null);
-    }, 1000);
-}
-
-function resolveEmojiAnswer(selected, selectedButton) {
-    if (emojiQuizLocked) return;
-    emojiQuizLocked = true;
-    window.clearInterval(emojiQuizInterval);
-    emojiQuizInterval = null;
-
-    const question = emojiQuizQuestions[emojiQuizIndex];
-    const correct = selected === question.answer;
-    playActions.querySelectorAll(".quiz-option").forEach(button => {
-        button.disabled = true;
-        if (button.textContent === question.answer) button.classList.add("correct");
-    });
-
-    if (correct) {
-        emojiQuizScore += 10 + emojiQuizSeconds;
-        feedback.textContent = `✅ Correct! ${question.answer} · +${10 + emojiQuizSeconds} points`;
-    } else if (selected) {
-        selectedButton?.classList.add("incorrect");
-        feedback.textContent = `❌ Not quite. The answer is ${question.answer}.`;
-    } else {
-        feedback.textContent = `⏱️ Time's up! The answer is ${question.answer}.`;
-    }
-    quizScore.textContent = String(emojiQuizScore);
-    emojiQuizAdvanceTimeout = window.setTimeout(() => {
-        emojiQuizIndex += 1;
-        showEmojiQuizQuestion();
-    }, 950);
-}
-
-function finishEmojiQuiz() {
-    clearEmojiQuizTimers();
-    quizHud.classList.add("hidden");
-    playPanel.classList.remove("quiz-active");
-    promptLabel.textContent = "ROUND COMPLETE";
-    promptText.textContent = `🏆 ${emojiQuizScore} points`;
-    feedback.textContent = `You finished all ${emojiQuizQuestions.length} emoji puzzles!`;
-    playActions.className = "play-actions";
-    playActions.replaceChildren(
-        createButton("🔁 Play again", "action-button primary", startEmojiQuiz)
-    );
-}
-
 // ========================================
 // TAMIL GAME CONTROLS
 // ========================================
@@ -522,12 +372,10 @@ function addTamilGameControls() {
     categoryLabel.textContent = "Category";
     categoryGroup.appendChild(categoryLabel);
 
-    const categories = currentGame === "songquiz"
-        ? [{ value: "songs", label: "🎧 Tamil Songs" }]
-        : [
-            { value: "movies", label: "🎬 Tamil Movies" },
-            { value: "songs", label: "🎵 Tamil Songs" }
-        ];
+    const categories = [
+        { value: "movies", label: "🎬 Tamil Movies" },
+        { value: "songs", label: "🎵 Tamil Songs" }
+    ];
 
     categories.forEach(category => {
         const button = createButton(
@@ -590,7 +438,7 @@ function showTamilPrompt() {
 
     feedback.textContent = "";
     playActions.replaceChildren();
-    answerForm.classList.toggle("hidden", currentGame !== "songquiz");
+    answerForm.classList.add("hidden");
     answerInput.value = "";
 
     if (!currentTamilPrompt) {
@@ -617,13 +465,6 @@ function showTamilPrompt() {
                 "action-button primary",
                 showTamilPrompt
             )
-        );
-    } else if (currentGame === "songquiz") {
-        promptLabel.textContent = "🎧 HUM IT · NAME THAT SONG";
-        promptText.textContent = `🎶 ${currentTamilPrompt.clue} · Hum it, then type the song title.`;
-        feedback.textContent = "Use the emojis to identify the title. No lyrics are shown.";
-        playActions.append(
-            createButton("🔄 Next song", "action-button", showTamilPrompt)
         );
     } else {
         promptLabel.textContent = "GUESS THE TITLE";
@@ -654,9 +495,6 @@ function showTamilPrompt() {
 // ========================================
 
 function openGame(gameKey) {
-    clearEmojiQuizTimers();
-    quizHud.classList.add("hidden");
-    playPanel.classList.remove("quiz-active");
     currentGame = gameKey;
     currentPrompt = null;
     feedback.textContent = "";
@@ -687,15 +525,8 @@ function openGame(gameKey) {
         return;
     }
 
-    if (gameKey === "emojichallenge") {
-        startEmojiQuiz();
-        playSection.scrollIntoView({ behavior: "smooth", block: "start" });
-        return;
-    }
-
-    if (gameKey === "charades" || gameKey === "songquiz") {
+    if (gameKey === "charades") {
         currentTamilCategory = "movies";
-        if (gameKey === "songquiz") currentTamilCategory = "songs";
         currentTamilDifficulty = "mixed";
 
         addTamilGameControls();
@@ -705,12 +536,6 @@ function openGame(gameKey) {
             behavior: "smooth",
             block: "start"
         });
-        return;
-    }
-
-    if (gameKey === "titlechain") {
-        startTitleChain();
-        playSection.scrollIntoView({ behavior: "smooth", block: "start" });
         return;
     }
 
@@ -876,66 +701,12 @@ function normalizeAnswer(value) {
         .replace(/[^a-z0-9]/g, "");
 }
 
-function getChainTitles() {
-    return [...new Set(tamilPrompts.map(prompt => prompt.answer))];
-}
-
-function startTitleChain() {
-    usedChainTitles = new Set();
-    const titles = getChainTitles();
-    const playableLetters = [...new Set(titles.map(title => normalizeAnswer(title)[0]))]
-        .filter(letter => titles.filter(title => normalizeAnswer(title).startsWith(letter)).length > 1);
-    titleChainLetter = playableLetters[Math.floor(Math.random() * playableLetters.length)] || "a";
-    promptLabel.textContent = "🔗 TITLE CHAIN · YOUR TURN";
-    promptText.textContent = `Name any Tamil movie or song in the deck starting with “${titleChainLetter.toUpperCase()}”. Its last letter becomes the next turn.`;
-    answerForm.classList.remove("hidden");
-    answerInput.value = "";
-    answerInput.placeholder = "Type a Tamil movie or song title…";
-    feedback.textContent = "Correct titles must be in the game deck. No repeats!";
-    playActions.replaceChildren();
-}
-
 function checkAnswer(event) {
     event.preventDefault();
     const typed = answerInput.value.trim();
     if (!typed) {
         feedback.textContent = "Type an answer first.";
         answerInput.focus();
-        return;
-    }
-
-    if (currentGame === "titlechain") {
-        const titles = getChainTitles();
-        const matchedTitle = titles.find(title => normalizeAnswer(title) === normalizeAnswer(typed));
-        if (!matchedTitle) {
-            feedback.textContent = "That title isn't in this round's movie and song deck. Try another!";
-            return;
-        }
-        if (!normalizeAnswer(matchedTitle).startsWith(titleChainLetter)) {
-            feedback.textContent = `That starts with “${normalizeAnswer(matchedTitle)[0].toUpperCase()}”. Find one beginning with “${titleChainLetter.toUpperCase()}”.`;
-            return;
-        }
-        if (usedChainTitles.has(normalizeAnswer(matchedTitle))) {
-            feedback.textContent = "That title has already been used. Keep the chain fresh!";
-            return;
-        }
-
-        usedChainTitles.add(normalizeAnswer(matchedTitle));
-        const normalized = normalizeAnswer(matchedTitle);
-        const nextLetter = normalized[normalized.length - 1];
-        const nextOptions = titles.filter(title =>
-            normalizeAnswer(title).startsWith(nextLetter) &&
-            !usedChainTitles.has(normalizeAnswer(title))
-        );
-        promptText.textContent = `✅ ${matchedTitle}! Next title must start with “${nextLetter.toUpperCase()}”.`;
-        answerInput.value = "";
-        if (nextOptions.length) {
-            titleChainLetter = nextLetter;
-            feedback.textContent = "Nice one! Pass the device to the next player.";
-        } else {
-            feedback.textContent = "Chain complete! No unused title in the deck starts with that letter. Play again for a new start!";
-            answerForm.classList.add("hidden");
-        }
         return;
     }
 
@@ -964,10 +735,7 @@ function showNextPrompt() {
         currentGame === "truth" ||
         currentGame === "thisorthat" ||
         currentGame === "custom" ||
-        currentGame === "charades" ||
-        currentGame === "emojichallenge" ||
-        currentGame === "songquiz" ||
-        currentGame === "titlechain"
+        currentGame === "charades"
     ) {
         return;
     }
@@ -1161,9 +929,6 @@ document.getElementById("explore-button").addEventListener("click", () => {
 });
 
 document.getElementById("back-button").addEventListener("click", () => {
-    clearEmojiQuizTimers();
-    quizHud.classList.add("hidden");
-    playPanel.classList.remove("quiz-active");
     playSection.classList.add("hidden");
     customBuilder.classList.add("hidden");
     hero.classList.remove("hidden");
@@ -1180,9 +945,6 @@ document.getElementById("back-button").addEventListener("click", () => {
 document.getElementById("home-link").addEventListener("click", event => {
     event.preventDefault();
 
-    clearEmojiQuizTimers();
-    quizHud.classList.add("hidden");
-    playPanel.classList.remove("quiz-active");
 
     playSection.classList.add("hidden");
     customBuilder.classList.add("hidden");
