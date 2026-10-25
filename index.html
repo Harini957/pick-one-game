@@ -55,7 +55,7 @@
                     <p class="eyebrow">THE PLAYGROUND</p>
                     <h2>Choose your <span>chaos.</span></h2>
                 </div>
-                <p class="count">11 GAMES TO PLAY</p>
+                <p class="count">13 GAMES TO PLAY</p>
             </div>
 
             <div class="game-grid">
@@ -153,6 +153,20 @@
                     <small>TRIVIA FACE-OFF</small>
                 </button>
 
+                <button class="game-card purple" data-game="titlescramble" type="button">
+                    <span class="card-top"><span class="emoji">🔤</span><span class="arrow">↗</span></span>
+                    <strong>Tamil Title Scramble</strong>
+                    <span class="description">Unscramble letters and type the movie or song title.</span>
+                    <small>UNMIX THE TITLE</small>
+                </button>
+
+                <button class="game-card pink" data-game="kollywoodpicks" type="button">
+                    <span class="card-top"><span class="emoji">🎬</span><span class="arrow">↗</span></span>
+                    <strong>Kollywood Showdown</strong>
+                    <span class="description">Pick your favourite Tamil movie or song and defend it.</span>
+                    <small>CHOOSE YOUR SIDE</small>
+                </button>
+
                 <button class="game-card orange" data-game="custom" type="button">
                     <span class="card-top">
                         <span class="emoji">📝</span>
@@ -179,6 +193,12 @@
                 <p class="play-subtitle" id="play-subtitle"></p>
 
                 <div class="game-controls" id="game-controls"></div>
+
+                <div class="quiz-hud hidden" id="quiz-hud" aria-live="polite">
+                    <div class="quiz-timer"><span class="timer-icon">⏱️</span><strong id="quiz-time">10</strong></div>
+                    <div class="quiz-progress"><strong id="quiz-progress">1 of 15</strong></div>
+                    <div class="quiz-score">Score: <strong id="quiz-score">0</strong></div>
+                </div>
 
                 <div class="prompt-card">
                     <small id="prompt-label">YOUR PROMPT</small>

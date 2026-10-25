@@ -1,7 +1,7 @@
 
 "use strict";
 
-const CACHE_NAME = "pick-one-v3";
+const CACHE_NAME = "pick-one-v4";
 
 const APP_FILES = [
     "./",
