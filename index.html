@@ -55,7 +55,7 @@
                     <p class="eyebrow">THE PLAYGROUND</p>
                     <h2>Choose your <span>chaos.</span></h2>
                 </div>
-                <p class="count">09 GAMES TO PLAY</p>
+                <p class="count">11 GAMES TO PLAY</p>
             </div>
 
             <div class="game-grid">
@@ -124,8 +124,8 @@
                         <span class="emoji">🤯</span>
                         <span class="arrow">↗</span>
                     </span>
-                    <strong>Tamil Movie Emoji Quiz</strong>
-                    <span class="description">Decode emojis to guess movies and songs.</span>
+                    <strong>Tamil Emoji Rebus</strong>
+                    <span class="description">Decode emoji word clues for Tamil movie and song titles.</span>
                     <small>GUESS THE TITLE</small>
                 </button>
 
@@ -137,6 +137,20 @@
                     <strong>Tamil Song ID</strong>
                     <span class="description">Decode a clue, hum the tune, name that hit.</span>
                     <small>NAME THAT SONG</small>
+                </button>
+
+                <button class="game-card yellow" data-game="titlechain" type="button">
+                    <span class="card-top"><span class="emoji">🔗</span><span class="arrow">↗</span></span>
+                    <strong>Tamil Title Chain</strong>
+                    <span class="description">Keep the movie and song chain alive, one letter at a time.</span>
+                    <small>DON'T BREAK THE CHAIN</small>
+                </button>
+
+                <button class="game-card green" data-game="dialogue" type="button">
+                    <span class="card-top"><span class="emoji">🎙️</span><span class="arrow">↗</span></span>
+                    <strong>Kollywood Quickfire</strong>
+                    <span class="description">Ten Tamil cinema trivia questions. Type your guess and check it.</span>
+                    <small>TRIVIA FACE-OFF</small>
                 </button>
 
                 <button class="game-card orange" data-game="custom" type="button">
@@ -172,6 +186,13 @@
                 </div>
 
                 <div class="play-actions" id="play-actions"></div>
+                <form class="answer-entry hidden" id="answer-form">
+                    <label for="answer-input">Your answer</label>
+                    <div class="answer-row">
+                        <input id="answer-input" type="text" maxlength="100" autocomplete="off" placeholder="Type the Tamil title…">
+                        <button class="action-button primary" type="submit">Check answer</button>
+                    </div>
+                </form>
                 <p class="feedback" id="feedback" role="status"></p>
             </div>
         </section>

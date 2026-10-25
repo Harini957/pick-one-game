@@ -570,6 +570,46 @@ textarea:focus-visible {
     margin-top: 24px;
 }
 
+.answer-entry {
+    width: min(620px, 100%);
+    margin: 22px auto 0;
+    text-align: left;
+}
+
+.answer-entry label {
+    display: block;
+    margin-bottom: 8px;
+    color: #d9ccff;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.answer-row {
+    display: flex;
+    gap: 10px;
+}
+
+.answer-row input {
+    min-width: 0;
+    flex: 1;
+    padding: 12px 14px;
+    border: 1px solid #51476d;
+    border-radius: 12px;
+    background: #171722;
+    color: var(--ink);
+}
+
+.answer-row input::placeholder {
+    color: #858198;
+}
+
+.answer-row input:focus-visible {
+    outline: 3px solid #a78bfa;
+    outline-offset: 2px;
+}
+
 .action-button.primary {
     border-color: transparent;
     background: linear-gradient(110deg, #7656f6, #c052bd);
@@ -813,6 +853,10 @@ footer small {
     .play-panel {
         padding: 24px 16px;
         border-radius: 20px;
+    }
+
+    .answer-row {
+        flex-direction: column;
     }
 
     .prompt-card {

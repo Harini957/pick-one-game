@@ -138,13 +138,37 @@ const games = {
     emojichallenge: {
         title: "Tamil Emoji Challenge",
         emoji: "🤯",
-        subtitle: "Decode the emojis and guess the Tamil title!"
+        subtitle: "Decode title words, initials, and clear movie or song clues."
     },
 
     songquiz: {
         title: "Tamil Song ID",
         emoji: "🎧",
         subtitle: "Hum a tune, decode a clue, and name that Tamil hit!"
+    },
+
+    titlechain: {
+        title: "Tamil Title Chain",
+        emoji: "🔗",
+        subtitle: "Enter a Tamil movie or song that starts with the required letter."
+    },
+
+    dialogue: {
+        title: "Kollywood Quickfire",
+        emoji: "🎙️",
+        subtitle: "Quick Tamil cinema trivia. Type your answer and check it!",
+        prompts: [
+            { question: "Which film features the character Senapathy?", answer: "Indian" },
+            { question: "In which film does a school teacher called JD face off with Bhavani?", answer: "Master" },
+            { question: "Which film follows a retired jailer named Muthuvel Pandian?", answer: "Jailer" },
+            { question: "Which Mani Ratnam film follows Karthik and Jessie?", answer: "Vinnaithaandi Varuvaayaa" },
+            { question: "Which film has the unforgettable line of a friendship between Anbarasu and Nallasivam?", answer: "Anbe Sivam" },
+            { question: "Which film follows a group of friends reuniting after school, including Ram and Jaanu?", answer: "96" },
+            { question: "Which film features a filmmaker named Karthik Subbaraj and a gangster named Assault Sethu?", answer: "Jigarthanda" },
+            { question: "Which film stars Dhanush as a young man whose father is a farmer named Siva Saamy?", answer: "Asuran" },
+            { question: "Which film pairs a young man named Thiru with his childhood friend Shobana?", answer: "Thiruchitrambalam" },
+            { question: "Which film centers on a headstrong young man named Don who returns to college?", answer: "Don" }
+        ]
     },
 
     custom: {
@@ -162,24 +186,24 @@ const games = {
 
 const tamilPrompts = [
     // CLASSIC TAMIL MOVIES
-    { category: "movies", difficulty: "easy", era: "classic", answer: "Baasha", clue: "🕶️👑💥" },
-    { category: "movies", difficulty: "medium", era: "classic", answer: "Annamalai", clue: "🐄🏭👑" },
-    { category: "movies", difficulty: "hard", era: "classic", answer: "Mouna Ragam", clue: "🤫🎵💔" },
-    { category: "movies", difficulty: "medium", era: "classic", answer: "Thalapathi", clue: "🤝⚔️👑" },
-    { category: "movies", difficulty: "easy", era: "classic", answer: "Padayappa", clue: "🦁🔥👑" },
-    { category: "movies", difficulty: "medium", era: "classic", answer: "Nayakan", clue: "👨‍👧🌆⚖️" },
-    { category: "movies", difficulty: "easy", era: "classic", answer: "Jeans", clue: "👖👬💎" },
-    { category: "movies", difficulty: "hard", era: "classic", answer: "Alaipayuthey", clue: "🚆❤️🌊" },
+    { category: "movies", difficulty: "easy", era: "classic", answer: "Baasha", clue: "🕶️👑🗣️💥", hint: "A stylish don and his hidden identity." },
+    { category: "movies", difficulty: "medium", era: "classic", answer: "Annamalai", clue: "🙋‍♂️⛰️🐄", hint: "Read the first two emojis as “Anna” + “malai”." },
+    { category: "movies", difficulty: "hard", era: "classic", answer: "Mouna Ragam", clue: "🤫🎼", hint: "The title means a silent melody." },
+    { category: "movies", difficulty: "medium", era: "classic", answer: "Thalapathi", clue: "🛡️👑🤝", hint: "A commander and his king-like friend." },
+    { category: "movies", difficulty: "easy", era: "classic", answer: "Padayappa", clue: "🪖🔥👑", hint: "Rajinikanth’s larger-than-life title character." },
+    { category: "movies", difficulty: "medium", era: "classic", answer: "Nayakan", clue: "🦸‍♂️🌆⚖️", hint: "A celebrated crime-drama hero." },
+    { category: "movies", difficulty: "easy", era: "classic", answer: "Jeans", clue: "👖👖💎", hint: "The title is the clothing item." },
+    { category: "movies", difficulty: "hard", era: "classic", answer: "Alaipayuthey", clue: "🌊〰️🚆❤️", hint: "A wave-like journey and a romance that begins on a train." },
 
     // MODERN TAMIL MOVIES
-    { category: "movies", difficulty: "easy", era: "modern", answer: "Jailer", clue: "👮🔒🔥" },
-    { category: "movies", difficulty: "easy", era: "modern", answer: "Leo", clue: "🦁☕💥" },
-    { category: "movies", difficulty: "medium", era: "modern", answer: "Vikram", clue: "🕵️🔫🌃" },
-    { category: "movies", difficulty: "hard", era: "modern", answer: "96", clue: "🏫❤️⏳" },
-    { category: "movies", difficulty: "easy", era: "modern", answer: "Master", clue: "👨‍🏫🎓🥊" },
-    { category: "movies", difficulty: "medium", era: "modern", answer: "Soorarai Pottru", clue: "✈️👨‍✈️☁️" },
-    { category: "movies", difficulty: "medium", era: "modern", answer: "Doctor", clue: "🩺🤖🧒" },
-    { category: "movies", difficulty: "hard", era: "modern", answer: "Vinnaithaandi Varuvaayaa", clue: "🌌❤️🚶" },
+    { category: "movies", difficulty: "easy", era: "modern", answer: "Jailer", clue: "🔒👮‍♂️🗝️", hint: "The job title is the answer." },
+    { category: "movies", difficulty: "easy", era: "modern", answer: "Leo", clue: "♌🦁☕", hint: "The zodiac sign gives the lead character’s name." },
+    { category: "movies", difficulty: "medium", era: "modern", answer: "Vikram", clue: "🕵️‍♂️🔫🕶️", hint: "A spy-action film whose lead is known by one name." },
+    { category: "movies", difficulty: "hard", era: "modern", answer: "96", clue: "9️⃣6️⃣🏫💌", hint: "The number is the title; the school and letter hint at the reunion romance." },
+    { category: "movies", difficulty: "easy", era: "modern", answer: "Master", clue: "🧑‍🏫🏆🥊", hint: "A teacher faces a local gangster." },
+    { category: "movies", difficulty: "medium", era: "modern", answer: "Soorarai Pottru", clue: "✈️💸🚀🙌", hint: "A determined man dreams of making air travel affordable." },
+    { category: "movies", difficulty: "medium", era: "modern", answer: "Doctor", clue: "🩺🧑‍⚕️🤖", hint: "The title is the hero’s profession." },
+    { category: "movies", difficulty: "hard", era: "modern", answer: "Vinnaithaandi Varuvaayaa", clue: "🌌➡️🚶‍♀️💌", hint: "A sky-crossing question wrapped in a romance." },
 
     // CLASSIC TAMIL SONGS
     { category: "songs", difficulty: "easy", era: "classic", answer: "Chinna Chinna Aasai", clue: "🤏✨💭" },
@@ -200,17 +224,18 @@ const tamilPrompts = [
     { category: "songs", difficulty: "medium", era: "modern", answer: "Rowdy Baby", clue: "😎👶💃" },
     { category: "songs", difficulty: "medium", era: "modern", answer: "Naa Ready", clue: "🙋🔥🎤" },
     { category: "songs", difficulty: "hard", era: "modern", answer: "Katchi Sera", clue: "👀❤️🎶" },
-    { category: "movies", difficulty: "easy", era: "classic", answer: "Muthu", clue: "🐎💎👑" },
-    { category: "movies", difficulty: "medium", era: "classic", answer: "Indian", clue: "🇮🇳👴⚖️" },
-    { category: "movies", difficulty: "medium", era: "classic", answer: "Gentleman", clue: "🕴️💰🏦" },
-    { category: "movies", difficulty: "hard", era: "classic", answer: "Iruvar", clue: "👬🎭🏛️" },
-    { category: "movies", difficulty: "easy", era: "classic", answer: "Sivaji", clue: "🕴️💻💰" },
+    { category: "movies", difficulty: "easy", era: "classic", answer: "Muthu", clue: "🦪💎🐎👑", hint: "The title means pearl; the rest points to the Rajinikanth film." },
+    { category: "movies", difficulty: "medium", era: "classic", answer: "Indian", clue: "🇮🇳👴🦸‍♂️", hint: "A freedom fighter returns to fight corruption." },
+    { category: "movies", difficulty: "medium", era: "classic", answer: "Gentleman", clue: "🤵🕴️💰", hint: "A polished man leads a double life." },
+    { category: "movies", difficulty: "hard", era: "classic", answer: "Iruvar", clue: "2️⃣👨‍🤝‍👨🎭", hint: "The Tamil title means “the two”." },
+    { category: "movies", difficulty: "easy", era: "classic", answer: "Sivaji", clue: "👑💻💰🔥", hint: "A Rajinikanth character takes on corruption." },
     { category: "movies", difficulty: "medium", era: "classic", answer: "Anbe Sivam", clue: "❤️☮️🤝" },
-    { category: "movies", difficulty: "medium", era: "classic", answer: "Ghilli", clue: "🏏🏃‍♂️💥" },
-    { category: "movies", difficulty: "easy", era: "classic", answer: "Chandramukhi", clue: "👻🏰💃" },
+    { category: "movies", difficulty: "medium", era: "classic", answer: "Ghilli", clue: "🏏🥇🏃‍♂️🏆" },
+    { category: "movies", difficulty: "easy", era: "classic", answer: "Chandramukhi", clue: "🌙👩‍🦰👻" },
     { category: "movies", difficulty: "hard", era: "classic", answer: "Pithamagan", clue: "🌾🪦🤝" },
-    { category: "movies", difficulty: "medium", era: "classic", answer: "Sachein", clue: "🎓❤️😄" },
-    { category: "movies", difficulty: "easy", era: "modern", answer: "Ponniyin Selvan", clue: "👑🌊⚔️" },
+    { category: "movies", difficulty: "medium", era: "classic", answer: "Sachein", aliases: ["Sachien"], clue: "🏏🔤🎓💘", hint: "A famous cricketer's first name, spelled with an extra 'e'." },
+    { category: "movies", difficulty: "easy", era: "modern", answer: "Thuppakki", aliases: ["Thuppaki", "Thupaaki"], clue: "🔫🎯🪖", hint: "The title is the Tamil word for the weapon shown." },
+    { category: "movies", difficulty: "easy", era: "modern", answer: "Ponniyin Selvan", clue: "🌊👦👑⚔️", hint: "The title means “son of Ponni”; Ponni is the river Cauvery." },
     { category: "movies", difficulty: "easy", era: "modern", answer: "Vikram Vedha", clue: "👮‍♂️🧔⚖️" },
     { category: "movies", difficulty: "medium", era: "modern", answer: "Kaithi", clue: "🚚🌙🚔" },
     { category: "movies", difficulty: "easy", era: "modern", answer: "Jigarthanda", clue: "🎬🔫🎞️" },
@@ -260,6 +285,8 @@ const promptLabel = document.getElementById("prompt-label");
 const promptText = document.getElementById("prompt-text");
 const playActions = document.getElementById("play-actions");
 const feedback = document.getElementById("feedback");
+const answerForm = document.getElementById("answer-form");
+const answerInput = document.getElementById("answer-input");
 
 const customForm = document.getElementById("custom-form");
 const customQuestion = document.getElementById("custom-question");
@@ -274,12 +301,13 @@ let currentGame = null;
 let currentTamilCategory = "movies";
 let currentTamilDifficulty = "mixed";
 let currentTamilPrompt = null;
-let tamilAnswerRevealed = false;
 
 let currentTruthType = "Truth";
 let customQuestions = [];
 let currentPrompt = null;
 const usedPrompts = {};
+let titleChainLetter = "";
+let usedChainTitles = new Set();
 
 // ========================================
 // RANDOM PROMPT HELPER
@@ -406,9 +434,10 @@ function showTamilPrompt() {
         `${currentGame}-${currentTamilCategory}-${currentTamilDifficulty}`
     );
 
-    tamilAnswerRevealed = false;
     feedback.textContent = "";
     playActions.replaceChildren();
+    answerForm.classList.toggle("hidden", !["emojichallenge", "songquiz"].includes(currentGame));
+    answerInput.value = "";
 
     if (!currentTamilPrompt) {
         promptLabel.textContent = "NO PROMPTS";
@@ -437,59 +466,32 @@ function showTamilPrompt() {
         );
     } else if (currentGame === "songquiz") {
         promptLabel.textContent = "🎧 HUM IT · NAME THAT SONG";
-        promptText.textContent = `🎶 ${currentTamilPrompt.clue} · Hum or sing the tune!`;
-        feedback.textContent = "No lyrics needed: hum the melody, then let the group guess the title.";
+        promptText.textContent = `🎶 ${currentTamilPrompt.clue} · Hum it, then type the song title.`;
+        feedback.textContent = "Use the emojis to identify the title. No lyrics are shown.";
         playActions.append(
-            createButton("👀 Reveal song", "action-button primary", revealTamilAnswer),
             createButton("🔄 Next song", "action-button", showTamilPrompt)
         );
     } else {
         promptLabel.textContent = "GUESS THE TITLE";
         promptText.textContent = currentTamilPrompt.clue;
 
-        feedback.textContent =
-            `Guess the ${categoryName} from the emojis!`;
+        feedback.textContent = `Guess the ${categoryName} from the emoji rebus.`;
+
+        if (currentTamilPrompt.hint) {
+            playActions.appendChild(createButton(
+                "💡 Hint",
+                "action-button",
+                () => { feedback.textContent = `Hint: ${currentTamilPrompt.hint}`; }
+            ));
+        }
 
         playActions.append(
-            createButton(
-                "👀 Reveal answer",
-                "action-button primary",
-                revealTamilAnswer
-            ),
             createButton(
                 "🔄 Next clue",
                 "action-button",
                 showTamilPrompt
             )
         );
-    }
-}
-
-function revealTamilAnswer() {
-    if (!currentTamilPrompt || tamilAnswerRevealed) {
-        return;
-    }
-
-    tamilAnswerRevealed = true;
-    promptText.textContent = currentTamilPrompt.answer;
-
-    const categoryName = currentTamilCategory === "movies"
-        ? "Tamil movie"
-        : "Tamil song";
-
-    const eraName = currentTamilPrompt.era === "classic"
-        ? "Classic"
-        : "Modern";
-
-    feedback.textContent =
-        `${eraName} ${categoryName} · ` +
-        `${currentTamilPrompt.difficulty.toUpperCase()} difficulty 🎉`;
-
-    const revealButton = playActions.querySelector(".action-button.primary");
-
-    if (revealButton) {
-        revealButton.disabled = true;
-        revealButton.textContent = "Answer revealed ✓";
     }
 }
 
@@ -503,6 +505,8 @@ function openGame(gameKey) {
     feedback.textContent = "";
     gameControls.replaceChildren();
     playActions.replaceChildren();
+    answerForm.classList.add("hidden");
+    answerInput.value = "";
 
     hero.classList.add("hidden");
     gamesSection.classList.add("hidden");
@@ -540,6 +544,12 @@ function openGame(gameKey) {
         return;
     }
 
+    if (gameKey === "titlechain") {
+        startTitleChain();
+        playSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+    }
+
     if (gameKey === "truth") {
         currentTruthType = "Truth";
         addTruthOrDareControls();
@@ -551,6 +561,7 @@ function openGame(gameKey) {
         showThisOrThatPrompt();
     } else {
         promptLabel.textContent = "YOUR PROMPT";
+        answerForm.classList.toggle("hidden", gameKey !== "dialogue");
         addNextButton("Next question →");
         showNextPrompt();
     }
@@ -693,6 +704,94 @@ function chooseThisOrThat(choice) {
 // OTHER GAME PROMPTS
 // ========================================
 
+function normalizeAnswer(value) {
+    return value
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, "");
+}
+
+function getChainTitles() {
+    return [...new Set(tamilPrompts.map(prompt => prompt.answer))];
+}
+
+function startTitleChain() {
+    usedChainTitles = new Set();
+    const titles = getChainTitles();
+    const playableLetters = [...new Set(titles.map(title => normalizeAnswer(title)[0]))]
+        .filter(letter => titles.filter(title => normalizeAnswer(title).startsWith(letter)).length > 1);
+    titleChainLetter = playableLetters[Math.floor(Math.random() * playableLetters.length)] || "a";
+    promptLabel.textContent = "🔗 TITLE CHAIN · YOUR TURN";
+    promptText.textContent = `Name any Tamil movie or song in the deck starting with “${titleChainLetter.toUpperCase()}”. Its last letter becomes the next turn.`;
+    answerForm.classList.remove("hidden");
+    answerInput.value = "";
+    answerInput.placeholder = "Type a Tamil movie or song title…";
+    feedback.textContent = "Correct titles must be in the game deck. No repeats!";
+    playActions.replaceChildren();
+}
+
+function checkAnswer(event) {
+    event.preventDefault();
+    const typed = answerInput.value.trim();
+    if (!typed) {
+        feedback.textContent = "Type an answer first.";
+        answerInput.focus();
+        return;
+    }
+
+    if (currentGame === "titlechain") {
+        const titles = getChainTitles();
+        const matchedTitle = titles.find(title => normalizeAnswer(title) === normalizeAnswer(typed));
+        if (!matchedTitle) {
+            feedback.textContent = "That title isn't in this round's movie and song deck. Try another!";
+            return;
+        }
+        if (!normalizeAnswer(matchedTitle).startsWith(titleChainLetter)) {
+            feedback.textContent = `That starts with “${normalizeAnswer(matchedTitle)[0].toUpperCase()}”. Find one beginning with “${titleChainLetter.toUpperCase()}”.`;
+            return;
+        }
+        if (usedChainTitles.has(normalizeAnswer(matchedTitle))) {
+            feedback.textContent = "That title has already been used. Keep the chain fresh!";
+            return;
+        }
+
+        usedChainTitles.add(normalizeAnswer(matchedTitle));
+        const normalized = normalizeAnswer(matchedTitle);
+        const nextLetter = normalized[normalized.length - 1];
+        const nextOptions = titles.filter(title =>
+            normalizeAnswer(title).startsWith(nextLetter) &&
+            !usedChainTitles.has(normalizeAnswer(title))
+        );
+        promptText.textContent = `✅ ${matchedTitle}! Next title must start with “${nextLetter.toUpperCase()}”.`;
+        answerInput.value = "";
+        if (nextOptions.length) {
+            titleChainLetter = nextLetter;
+            feedback.textContent = "Nice one! Pass the device to the next player.";
+        } else {
+            feedback.textContent = "Chain complete! No unused title in the deck starts with that letter. Play again for a new start!";
+            answerForm.classList.add("hidden");
+        }
+        return;
+    }
+
+    const expected = currentGame === "dialogue"
+        ? currentPrompt?.answer
+        : currentTamilPrompt?.answer;
+    if (!expected) return;
+
+    const aliases = currentGame === "dialogue" ? [] : (currentTamilPrompt?.aliases || []);
+    const acceptedAnswers = [expected, ...aliases];
+    if (acceptedAnswers.some(answer => normalizeAnswer(typed) === normalizeAnswer(answer))) {
+        feedback.textContent = `✅ Correct! ${expected}`;
+        answerInput.value = "";
+    } else {
+        feedback.textContent = "❌ Not quite—try another spelling or take another guess.";
+    }
+}
+
+answerForm.addEventListener("submit", checkAnswer);
+
 function showNextPrompt() {
     if (
         !currentGame ||
@@ -700,7 +799,9 @@ function showNextPrompt() {
         currentGame === "thisorthat" ||
         currentGame === "custom" ||
         currentGame === "charades" ||
-        currentGame === "emojichallenge"
+        currentGame === "emojichallenge" ||
+        currentGame === "songquiz" ||
+        currentGame === "titlechain"
     ) {
         return;
     }
@@ -713,9 +814,17 @@ function showNextPrompt() {
 
     currentPrompt = getRandomPrompt(game.prompts, currentGame);
     promptLabel.textContent = "YOUR PROMPT";
-    promptText.textContent = currentPrompt;
-    feedback.textContent =
-        "Pass the turn to another player when you're ready!";
+    promptText.textContent = currentGame === "dialogue"
+        ? currentPrompt.question
+        : currentPrompt;
+    if (currentGame === "dialogue") {
+        answerForm.classList.remove("hidden");
+        answerInput.value = "";
+        answerInput.placeholder = "Type the film title…";
+        feedback.textContent = "Type your guess and check it before the next question.";
+    } else {
+        feedback.textContent = "Pass the turn to another player when you're ready!";
+    }
 }
 
 // ========================================
