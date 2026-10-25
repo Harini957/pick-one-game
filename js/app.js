@@ -141,6 +141,12 @@ const games = {
         subtitle: "Decode the emojis and guess the Tamil title!"
     },
 
+    songquiz: {
+        title: "Tamil Song ID",
+        emoji: "🎧",
+        subtitle: "Hum a tune, decode a clue, and name that Tamil hit!"
+    },
+
     custom: {
         title: "Custom Questions",
         emoji: "📝",
@@ -193,7 +199,46 @@ const tamilPrompts = [
     { category: "songs", difficulty: "easy", era: "modern", answer: "Enjoy Enjaami", clue: "🌿🌾🎶😊" },
     { category: "songs", difficulty: "medium", era: "modern", answer: "Rowdy Baby", clue: "😎👶💃" },
     { category: "songs", difficulty: "medium", era: "modern", answer: "Naa Ready", clue: "🙋🔥🎤" },
-    { category: "songs", difficulty: "hard", era: "modern", answer: "Katchi Sera", clue: "👀❤️🎶" }
+    { category: "songs", difficulty: "hard", era: "modern", answer: "Katchi Sera", clue: "👀❤️🎶" },
+    { category: "movies", difficulty: "easy", era: "classic", answer: "Muthu", clue: "🐎💎👑" },
+    { category: "movies", difficulty: "medium", era: "classic", answer: "Indian", clue: "🇮🇳👴⚖️" },
+    { category: "movies", difficulty: "medium", era: "classic", answer: "Gentleman", clue: "🕴️💰🏦" },
+    { category: "movies", difficulty: "hard", era: "classic", answer: "Iruvar", clue: "👬🎭🏛️" },
+    { category: "movies", difficulty: "easy", era: "classic", answer: "Sivaji", clue: "🕴️💻💰" },
+    { category: "movies", difficulty: "medium", era: "classic", answer: "Anbe Sivam", clue: "❤️☮️🤝" },
+    { category: "movies", difficulty: "medium", era: "classic", answer: "Ghilli", clue: "🏏🏃‍♂️💥" },
+    { category: "movies", difficulty: "easy", era: "classic", answer: "Chandramukhi", clue: "👻🏰💃" },
+    { category: "movies", difficulty: "hard", era: "classic", answer: "Pithamagan", clue: "🌾🪦🤝" },
+    { category: "movies", difficulty: "medium", era: "classic", answer: "Sachein", clue: "🎓❤️😄" },
+    { category: "movies", difficulty: "easy", era: "modern", answer: "Ponniyin Selvan", clue: "👑🌊⚔️" },
+    { category: "movies", difficulty: "easy", era: "modern", answer: "Vikram Vedha", clue: "👮‍♂️🧔⚖️" },
+    { category: "movies", difficulty: "medium", era: "modern", answer: "Kaithi", clue: "🚚🌙🚔" },
+    { category: "movies", difficulty: "easy", era: "modern", answer: "Jigarthanda", clue: "🎬🔫🎞️" },
+    { category: "movies", difficulty: "medium", era: "modern", answer: "Asuran", clue: "🌾👨‍👦🔥" },
+    { category: "movies", difficulty: "hard", era: "modern", answer: "Super Deluxe", clue: "🛣️🧩🌈" },
+    { category: "movies", difficulty: "easy", era: "modern", answer: "Thiruchitrambalam", clue: "🕺🍲💛" },
+    { category: "movies", difficulty: "medium", era: "modern", answer: "Don", clue: "🎓😎🎉" },
+    { category: "movies", difficulty: "medium", era: "modern", answer: "Love Today", clue: "📱💬❤️" },
+    { category: "movies", difficulty: "hard", era: "modern", answer: "Parking", clue: "🚗🏠😤" },
+    { category: "songs", difficulty: "easy", era: "classic", answer: "Thendral Vandhu Theendum Pothu", clue: "🍃💨🤗🎶" },
+    { category: "songs", difficulty: "medium", era: "classic", answer: "Kannalane", clue: "👀❤️🎤" },
+    { category: "songs", difficulty: "medium", era: "classic", answer: "Sundari Kannal Oru Sethi", clue: "👸👀💌" },
+    { category: "songs", difficulty: "hard", era: "classic", answer: "Malargale Malargale", clue: "🌸🌼🌺🎶" },
+    { category: "songs", difficulty: "easy", era: "classic", answer: "Pachai Nirame", clue: "💚🌈🎨" },
+    { category: "songs", difficulty: "medium", era: "classic", answer: "Snehithane", clue: "🫂💌❤️" },
+    { category: "songs", difficulty: "easy", era: "classic", answer: "Oruvan Oruvan Mudhalali", clue: "👨‍💼🌍🎵" },
+    { category: "songs", difficulty: "hard", era: "classic", answer: "New York Nagaram", clue: "🗽🌃📞" },
+    { category: "songs", difficulty: "medium", era: "classic", answer: "Aathangara Marame", clue: "🌊🌳🎶" },
+    { category: "songs", difficulty: "easy", era: "classic", answer: "Vaseegara", clue: "😍💘🎼" },
+    { category: "songs", difficulty: "easy", era: "modern", answer: "Nenjukkul Peidhidum", clue: "❤️☔🎶" },
+    { category: "songs", difficulty: "medium", era: "modern", answer: "Aaruyire", clue: "🫀💞🎵" },
+    { category: "songs", difficulty: "medium", era: "modern", answer: "Rakita Rakita", clue: "🎉🕺🥁" },
+    { category: "songs", difficulty: "easy", era: "modern", answer: "Vaathi Raid", clue: "👨‍🏫🚨🔥" },
+    { category: "songs", difficulty: "medium", era: "modern", answer: "Private Party", clue: "🥳🔒🎶" },
+    { category: "songs", difficulty: "easy", era: "modern", answer: "Jimikki Ponnu", clue: "💎👧💃" },
+    { category: "songs", difficulty: "medium", era: "modern", answer: "Kaavaalaa", clue: "🕶️💃✨" },
+    { category: "songs", difficulty: "easy", era: "modern", answer: "Ranjithame", clue: "💃❤️🎉" },
+    { category: "songs", difficulty: "medium", era: "modern", answer: "Porkanda Singam", clue: "⚔️🦁🔥" }
 ];
 
 // ========================================
@@ -295,10 +340,14 @@ function addTamilGameControls() {
     categoryLabel.textContent = "Category";
     categoryGroup.appendChild(categoryLabel);
 
-    [
-        { value: "movies", label: "🎬 Movies" },
-        { value: "songs", label: "🎵 Songs" }
-    ].forEach(category => {
+    const categories = currentGame === "songquiz"
+        ? [{ value: "songs", label: "🎧 Tamil Songs" }]
+        : [
+            { value: "movies", label: "🎬 Tamil Movies" },
+            { value: "songs", label: "🎵 Tamil Songs" }
+        ];
+
+    categories.forEach(category => {
         const button = createButton(
             category.label,
             "control-button" +
@@ -386,6 +435,14 @@ function showTamilPrompt() {
                 showTamilPrompt
             )
         );
+    } else if (currentGame === "songquiz") {
+        promptLabel.textContent = "🎧 HUM IT · NAME THAT SONG";
+        promptText.textContent = `🎶 ${currentTamilPrompt.clue} · Hum or sing the tune!`;
+        feedback.textContent = "No lyrics needed: hum the melody, then let the group guess the title.";
+        playActions.append(
+            createButton("👀 Reveal song", "action-button primary", revealTamilAnswer),
+            createButton("🔄 Next song", "action-button", showTamilPrompt)
+        );
     } else {
         promptLabel.textContent = "GUESS THE TITLE";
         promptText.textContent = currentTamilPrompt.clue;
@@ -468,8 +525,9 @@ function openGame(gameKey) {
         return;
     }
 
-    if (gameKey === "charades" || gameKey === "emojichallenge") {
+    if (gameKey === "charades" || gameKey === "emojichallenge" || gameKey === "songquiz") {
         currentTamilCategory = "movies";
+        if (gameKey === "songquiz") currentTamilCategory = "songs";
         currentTamilDifficulty = "mixed";
 
         addTamilGameControls();
